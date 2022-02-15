@@ -75,7 +75,7 @@
                         {{-- Livre, Structure, Str. Chapitres, Personnages, Geographie, Univers, Illustrations, Notes, Sources, Fiches, Dashboard --}}
                         <ul class="nav-main">
                             <li class="nav-main-item">
-                            <a class="nav-main-link" href="{{url('dashboard')}}">
+                            <a class="nav-main-link" href="{{route('dashboard.index')}}">
                                 <i class="nav-main-link-icon si si-grid"></i>
                                 <span class="nav-main-link-name">Dashboard</span>
                             </a>
@@ -83,13 +83,13 @@
                             
                             <li class="nav-main-heading">Lorem Ipsum</li>
                             <li class="nav-main-item">
-                                <a class="nav-main-link" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="{{url('book/index')}}">
+                                <a class="nav-main-link" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="{{route('bookinfo.index')}}">
                                     <i class="nav-main-link-icon fa fa-newspaper"></i>
                                     <span class="nav-main-link-name">Book</span>
                                 </a>
                             </li>
                             <li class="nav-main-item">
-                                <a class="nav-main-link" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{url('structure/index')}}">
+                                <a class="nav-main-link" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('structure.index')}}">
                                     <i class="nav-main-link-icon si si-list"></i>
                                     <span class="nav-main-link-name">Structure</span>
                                 </a>
