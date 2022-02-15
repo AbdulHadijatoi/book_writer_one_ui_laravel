@@ -21,7 +21,7 @@
                         Log In
                     </h1>
                     <p class="fw-medium text-muted">
-                        Welcome, please login or <a href="{{url('/signup')}}">sign up</a> for a new account.
+                        Welcome, please login or <a href="{{route('register')}}">sign up</a> for a new account.
                     </p>
                     </div>
                     <!-- END Header -->

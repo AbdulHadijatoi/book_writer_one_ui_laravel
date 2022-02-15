@@ -14,11 +14,6 @@ use App\Http\Controllers\Structure\StructureController;
 use App\Http\Controllers\Universe\UniverseController;
 use Illuminate\Support\Facades\Route;
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
@@ -30,7 +25,8 @@ Route::view('/pages/blank', 'pages.blank');
 
 Route::group(['middleware' => 'guest'], function () {
     Route::view('/login', 'auth/login');
-    Route::view('/signup', 'auth/signup');
+    Route::view('/register', 'auth/register');
+    Route::view('/', 'auth/login');
 });
 
 Route::group(['middleware' => 'auth'], function () {

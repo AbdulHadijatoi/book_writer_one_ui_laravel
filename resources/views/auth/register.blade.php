@@ -39,6 +39,12 @@
                   @csrf
                   
                   <div class="mb-4">
+                    <input type="text" class="form-control form-control-lg form-control-alt py-3" id="fullname" name="fullname" placeholder="Fullname">
+                    @if ($errors->has('fullname'))
+                      <span class="text-danger">{{ $errors->first('fullname') }}</span>
+                    @endif
+                  </div>
+                  <div class="mb-4">
                     <input type="email" class="form-control form-control-lg form-control-alt py-3" id="email" name="email" placeholder="Email">
                     @if ($errors->has('email'))
                       <span class="text-danger">{{ $errors->first('email') }}</span>
@@ -51,9 +57,9 @@
                     @endif
                   </div>
                   <div class="mb-4">
-                    <input type="password" class="form-control form-control-lg form-control-alt py-3" id="password_confirm" name="password_confirm" placeholder="Confirm Password">
-                    @if ($errors->has('password_confirm'))
-                      <span class="text-danger">{{ $errors->first('password_confirm') }}</span>
+                    <input type="password" class="form-control form-control-lg form-control-alt py-3" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password">
+                    @if ($errors->has('password_confirmation'))
+                      <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
                     @endif
                   </div>
                   <div class="mb-4">

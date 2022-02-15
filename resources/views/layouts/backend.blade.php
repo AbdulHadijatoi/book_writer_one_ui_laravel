@@ -183,25 +183,34 @@
                             <i class="fa fa-fw fa-ellipsis-v"></i>
                         </button>
                         <!-- END Toggle Mini Sidebar -->
-
-                       
                     </div>
                     <!-- END Left Section -->
 
                     <!-- Right Section -->
                     <div class="d-flex align-items-center">
+                        <!-- Search Form (visible on larger screens) -->
+                        <form class="d-md-inline-block" action="{{route('dashboard.index')}}" method="POST">
+                            @csrf
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control form-control-alt" placeholder="Synonym.." id="page-header-search-input2" name="synonym">
+                                {{-- <span class="input-group-text border-0">
+                                    <i class="fa fa-fw fa-search"></i>
+                                </span> --}}
+                            </div>
+                        </form>
+                        <!-- END Search Form -->
+                        
                         <!-- User Dropdown -->
                         <div class="dropdown d-inline-block ms-2">
                             <button type="button" class="btn btn-sm btn-alt-secondary d-flex align-items-center" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="rounded-circle" src="{{ asset('media/avatars/avatar10.jpg') }}" alt="Header Avatar" style="width: 21px;">
-                                <span class="d-none d-sm-inline-block ms-2">John</span>
+                                <span class="d-none d-sm-inline-block ms-2">{{ Auth::user()->fullname }}</span>
                                 <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block ms-1 mt-1"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0" aria-labelledby="page-header-user-dropdown">
                                 <div class="p-3 text-center bg-body-light border-bottom rounded-top">
                                     <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('media/avatars/avatar10.jpg') }}" alt="">
-                                    <p class="mt-2 mb-0 fw-medium">John Smith</p>
-                                    <p class="mb-0 text-muted fs-sm fw-medium">Web Developer</p>
+                                    <p class="mt-2 mb-0 fw-medium">{{ Auth::user()->fullname }}</p>
                                 </div>
                                 <div class="p-2">
                                     <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
@@ -221,36 +230,10 @@
                             </div>
                         </div>                        
                         <!-- END User Dropdown -->
-
-
-
-                        <!-- Toggle Side Overlay -->
-                        <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                        {{-- <button type="button" class="btn btn-sm btn-alt-secondary ms-2" data-toggle="layout" data-action="side_overlay_toggle">
-                            <i class="fa fa-fw fa-list-ul fa-flip-horizontal"></i>
-                        </button> --}}
-                        <!-- END Toggle Side Overlay -->
                     </div>
                     <!-- END Right Section -->
                 </div>
                 <!-- END Header Content -->
-
-                <!-- Header Search -->
-                <div id="page-header-search" class="overlay-header bg-body-extra-light">
-                    <div class="content-header">
-                        <form class="w-100" action="/dashboard" method="POST">
-                            @csrf
-                            <div class="input-group">
-                                <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                                <button type="button" class="btn btn-alt-danger" data-toggle="layout" data-action="header_search_off">
-                                    <i class="fa fa-fw fa-times-circle"></i>
-                                </button>
-                                <input type="text" class="form-control" placeholder="Search or hit ESC.." id="page-header-search-input" name="page-header-search-input">
-                            </div>
-                        </form>
-                   </div>
-                </div>
-                <!-- END Header Search -->
 
                 <!-- Header Loader -->
                 <!-- Please check out the Loaders page under Components category to see examples of showing/hiding it -->
