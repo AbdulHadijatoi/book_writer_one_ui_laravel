@@ -1,5 +1,6 @@
 @extends('layouts.backend')
 
+@section('title','Dashboard')
 @section('content')
     <!-- Hero -->
     <div class="bg-body-light">
@@ -10,7 +11,7 @@
                         Dashboard
                     </h1>
                     <h2 class="fs-base lh-base fw-medium text-muted mb-0">
-                        Welcome Admin, everything looks great.
+                        Welcome, everything looks great.
                     </h2>
                 </div>
                 <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
@@ -30,6 +31,7 @@
 
     <!-- Page Content -->
     <div class="content">
+        
         <div class="row row-deck">
             <div class="col-md-6 col-xl-4">
                 <div class="block block-rounded">
@@ -73,6 +75,8 @@
                     </div>
                 </div>
             </div>
+
+            
         </div>
     </div>
     <!-- END Page Content -->

@@ -4,7 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>OneUI - Bootstrap 5 Admin Template &amp; UI Framework</title>
+        <title>
+            @hasSection('title')
+                @yield('title')
+                 |
+            @endif
+         BookWriter</title>
 
         <meta name="description" content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
         <meta name="author" content="pixelcave">
@@ -70,21 +75,21 @@
                         {{-- Livre, Structure, Str. Chapitres, Personnages, Geographie, Univers, Illustrations, Notes, Sources, Fiches, Dashboard --}}
                         <ul class="nav-main">
                             <li class="nav-main-item">
-                            <a class="nav-main-link" href="be_pages_dashboard.html">
+                            <a class="nav-main-link" href="{{url('dashboard')}}">
                                 <i class="nav-main-link-icon si si-grid"></i>
                                 <span class="nav-main-link-name">Dashboard</span>
                             </a>
                             </li>
                             
-                            <li class="nav-main-heading">User Interface</li>
+                            <li class="nav-main-heading">Lorem Ipsum</li>
                             <li class="nav-main-item">
-                                <a class="nav-main-link" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
+                                <a class="nav-main-link" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="{{url('book/index')}}">
                                     <i class="nav-main-link-icon fa fa-newspaper"></i>
                                     <span class="nav-main-link-name">Book</span>
                                 </a>
                             </li>
                             <li class="nav-main-item">
-                                <a class="nav-main-link" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                                <a class="nav-main-link" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{url('structure/index')}}">
                                     <i class="nav-main-link-icon si si-list"></i>
                                     <span class="nav-main-link-name">Structure</span>
                                 </a>
