@@ -5421,9 +5421,11 @@ var Template = /*#__PURE__*/function () {
                 link.setAttribute('aria-expanded', 'false');
               } else {
                 // .. else if submenu is closed, close all other (same level) submenus first before open it
-                link.closest('ul').children.forEach(function (el) {
-                  el.classList.remove('open');
-                });
+                // Updated by Hadi on 15th Feb 2022:begins
+                  // link.closest('ul').children.forEach(function (el) {
+                  //   el.classList.remove('open');
+                  // });
+                // Updated by Hadi on 15th Feb 2022:ends
                 parentLi.classList.add('open');
                 link.setAttribute('aria-expanded', 'true');
               }
