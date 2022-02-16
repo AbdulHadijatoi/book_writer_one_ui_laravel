@@ -40,7 +40,7 @@
               <br/>
               <div class="block-content block-content-full">
                 <div class="row items-push">
-                  <div class="col-lg-8 col-xl-8 m-auto">
+                  <div class="col-xl-12 m-auto">
                     {{-- Titre Auteur Genre Themes --}}
                     <div class="mb-4">
                       <label class="form-label" for="title">Title <span class="text-danger">*</span></label>
@@ -77,14 +77,15 @@
                         <span class="text-danger">{{ $errors->first('summery') }}</span>
                       @endif
                     </div>
+                    
                   </div>
                 </div>
                 <!-- END Advanced -->
 
                 <!-- Submit -->
                 <div class="row items-push">
-                  <div class="col-lg-8 col-xl-8 m-auto">
-                    <button type="submit" class="btn btn-alt-primary">Submit</button>
+                  <div class="col-xl-12 d-flex justify-content-end">
+                    <button type="submit" class="btn btn-alt-primary">Save</button>
                   </div>
                 </div>
                 <!-- END Submit -->

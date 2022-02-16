@@ -75,83 +75,83 @@
                         {{-- Livre, Structure, Str. Chapitres, Personnages, Geographie, Univers, Illustrations, Notes, Sources, Fiches, Dashboard --}}
                         <ul class="nav-main">
                             <li class="nav-main-item">
-                            <a class="nav-main-link" href="{{route('dashboard.index')}}">
-                                <i class="nav-main-link-icon si si-grid"></i>
-                                <span class="nav-main-link-name">Dashboard</span>
-                            </a>
+                                <a class="nav-main-link {{ (request()->is('dashboard*')) ? 'active' : '' }}" href="{{route('dashboard.index')}}">
+                                    <i class="nav-main-link-icon si si-grid"></i>
+                                    <span class="nav-main-link-name">Dashboard</span>
+                                </a>
                             </li>
                             
                             <li class="nav-main-heading">Lorem Ipsum</li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="{{route('bookinfo.index')}}">
+                            <li class="nav-main-item {{ (request()->is('bookinfo*')) ? 'open' : '' }}">
+                                <a class="nav-main-link {{ (request()->is('bookinfo*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="{{route('bookinfo.index')}}">
                                     <i class="nav-main-link-icon fa fa-newspaper"></i>
                                     <span class="nav-main-link-name">Book</span>
                                 </a>
                             </li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('structure.index')}}">
+                            <li class="nav-main-item {{ (request()->is('structure*')) ? 'open' : '' }}">
+                                <a class="nav-main-link {{ (request()->is('structure*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('structure.index')}}">
                                     <i class="nav-main-link-icon si si-list"></i>
                                     <span class="nav-main-link-name">Structure</span>
                                 </a>
                             </li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                            <li class="nav-main-item {{ (request()->is('str_chapters*')) ? 'open' : '' }}">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('str_chapter*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('str_chapters.index')}}">
                                     <i class="nav-main-link-icon fa fa-laptop-medical"></i>
                                     <span class="nav-main-link-name">Str. Chapters</span>
                                 </a>
 
                                 <ul class="nav-main-submenu">
                                     <li class="nav-main-item">
-                                    <a class="nav-main-link" href="{{url('/')}}">
-                                        <span class="nav-main-link-name">Sublink-1</span>
-                                    </a>
+                                        <a class="nav-main-link {{ (request()->is('str_chapter/chapter*')) ? 'active' : '' }}" href="{{url('/')}}">
+                                            <span class="nav-main-link-name">Chapter-1</span>
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                            <li class="nav-main-item {{ (request()->is('chapters*')) ? 'open' : '' }}">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('chapters*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                                     <i class="nav-main-link-icon fa fa-receipt"></i>
                                     <span class="nav-main-link-name">Chapters</span>
                                 </a>
                             </li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                            <li class="nav-main-item {{ (request()->is('characters*')) ? 'open' : '' }}">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('characters*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                                     <i class="nav-main-link-icon fa fa-skating"></i>
                                     <span class="nav-main-link-name">Characters</span>
                                 </a>
                             </li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                            <li class="nav-main-item {{ (request()->is('geography*')) ? 'open' : '' }}">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('geography*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                                     <i class="nav-main-link-icon fa fa-spinner"></i>
                                     <span class="nav-main-link-name">Geography</span>
                                 </a>
                             </li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                            <li class="nav-main-item {{ (request()->is('universe*')) ? 'open' : '' }}">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('universe*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                                     <i class="nav-main-link-icon fa fa-star-of-david"></i>
                                     <span class="nav-main-link-name">Universe</span>
                                 </a>
                             </li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                            <li class="nav-main-item {{ (request()->is('illustrations*')) ? 'open' : '' }}">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('illustrations*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                                     <i class="nav-main-link-icon fa fa-image"></i>
                                     <span class="nav-main-link-name">Illustrations</span>
                                 </a>
                             </li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                            <li class="nav-main-item {{ (request()->is('notes*')) ? 'open' : '' }}">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('notes*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                                     <i class="nav-main-link-icon si si-pencil"></i>
                                     <span class="nav-main-link-name">Notes</span>
                                 </a>
                             </li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                            <li class="nav-main-item {{ (request()->is('sources*')) ? 'open' : '' }}">
+                                <a class="nav-main-link {{ (request()->is('sources*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                                     <i class="nav-main-link-icon si si-list"></i>
                                     <span class="nav-main-link-name">Sources</span>
                                 </a>
                             </li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                            <li class="nav-main-item {{ (request()->is('cards*')) ? 'open' : '' }}">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('cards*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                                     <i class="nav-main-link-icon fa fa-heart"></i>
                                     <span class="nav-main-link-name">Cards</span>
                                 </a>
@@ -199,7 +199,7 @@
                             </div>
                         </form>
                         <!-- END Search Form -->
-                        
+
                         <!-- User Dropdown -->
                         <div class="dropdown d-inline-block ms-2">
                             <button type="button" class="btn btn-sm btn-alt-secondary d-flex align-items-center" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
