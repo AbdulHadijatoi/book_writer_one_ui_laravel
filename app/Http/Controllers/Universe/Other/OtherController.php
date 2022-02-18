@@ -82,4 +82,8 @@ class OtherController extends Controller
     {
         //
     }
+
+    public function get_other(){
+        return view('universe.other.view');
+    }
 }

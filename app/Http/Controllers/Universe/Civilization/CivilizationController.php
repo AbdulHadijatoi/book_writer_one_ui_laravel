@@ -82,4 +82,8 @@ class CivilizationController extends Controller
     {
         //
     }
+
+    public function get_civilization(){
+        return view('universe.civilization.view');
+    }
 }

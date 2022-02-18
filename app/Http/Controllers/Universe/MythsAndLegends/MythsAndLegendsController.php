@@ -82,4 +82,8 @@ class MythsAndLegendsController extends Controller
     {
         //
     }
+
+    public function get_myths_and_legends(){
+        return view('universe.myths-and-legends.view');
+    }
 }

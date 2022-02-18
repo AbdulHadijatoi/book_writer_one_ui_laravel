@@ -3,12 +3,10 @@
 @section('title','Characters')
 @section('content')
 
-    <!-- Page Content -->
     <div class="content content-boxed">
-      <!-- User Profile -->
       <div class="block block-rounded">
         <div class="block-header block-header-default">
-          <h3 class="block-title">Character</h3>
+          <h3 class="block-title">Characters</h3>
         </div>
         <div class="block-content">
           <form action="be_pages_projects_edit.html" method="POST" enctype="multipart/form-data" onsubmit="return false;">
@@ -62,53 +60,53 @@
                 </div>
               </div>
 
-
-
-
-
-
-
-
-
               <div class="col-lg-12">
                 <div role="separator" class="dropdown-divider m-0 mb-4"></div>
                 <div class="row push">
-                  <div class="col-lg-12 d-flex flex-column flex-lg-row justify-content-lg-center">
-                    <div class="form-floating mb-4 mt-2 col-lg-5">
-                      <textarea class="form-control" id="physical_description" name="physical_description" style="height: 200px" placeholder="Physical description"></textarea>
-                      <label for="physical_description">Physical description</label>
-                      @if ($errors->has('physical_description'))
-                        <span class="text-danger">{{ $errors->first('physical_description') }}</span>
-                      @endif
+                  <div class="col-lg-12 d-flex flex-column flex-lg-row justify-content-lg-between">
+
+                    <div class="mb-4 mt-2 col-lg-6 p-lg-3">
+                      <div class="form-floating">
+                        <textarea class="form-control" id="physical_description" name="physical_description" style="height: 200px" placeholder="Physical description"></textarea>
+                        <label for="physical_description">Physical description</label>
+                        @if ($errors->has('physical_description'))
+                          <span class="text-danger">{{ $errors->first('physical_description') }}</span>
+                        @endif
+                      </div>
                     </div>
-                    <div class="col-lg-1"></div>
-                    <div class="form-floating mb-4 mt-2 col-lg-5">
-                      <textarea class="form-control" id="summery" name="summery" style="height: 200px" placeholder="Summery"></textarea>
-                      <label for="summery">Personality</label>
-                      @if ($errors->has('summery'))
-                        <span class="text-danger">{{ $errors->first('summery') }}</span>
-                      @endif
+                    <div class="mb-4 mt-2 col-lg-6 p-lg-3">
+                      <div class="form-floating">
+                        <textarea class="form-control" id="summery" name="summery" style="height: 200px" placeholder="Summery"></textarea>
+                        <label for="summery">Personality</label>
+                        @if ($errors->has('summery'))
+                          <span class="text-danger">{{ $errors->first('summery') }}</span>
+                        @endif
+                      </div>
                     </div>
+
                   </div>
                 </div>
                 
                 <div role="separator" class="dropdown-divider m-0 mb-4"></div>
                 <div class="row push">
                   <div class="col-lg-12 d-flex flex-column flex-lg-row justify-content-lg-center">
-                    <div class="form-floating mb-4 mt-2 col-lg-5">
-                      <textarea class="form-control" id="skills" name="skills" style="height: 200px" placeholder="Skills"></textarea>
-                      <label for="skills">Skills</label>
-                      @if ($errors->has('skills'))
-                        <span class="text-danger">{{ $errors->first('skills') }}</span>
-                      @endif
+                    <div class="mb-4 mt-2 col-lg-6 p-lg-3">
+                      <div class="form-floating">
+                        <textarea class="form-control" id="skills" name="skills" style="height: 200px" placeholder="Skills"></textarea>
+                        <label for="skills">Skills</label>
+                        @if ($errors->has('skills'))
+                          <span class="text-danger">{{ $errors->first('skills') }}</span>
+                        @endif
+                      </div>
                     </div>
-                    <div class="col-lg-1"></div>
-                    <div class="form-floating mb-4 mt-2 col-lg-5">
-                      <textarea class="form-control" id="history" name="history" style="height: 200px" placeholder="History and origins"></textarea>
-                      <label for="history">History and origins</label>
-                      @if ($errors->has('history'))
-                        <span class="text-danger">{{ $errors->first('history') }}</span>
-                      @endif
+                    <div class="mb-4 mt-2 col-lg-6 p-lg-3">
+                      <div class="form-floating">
+                        <textarea class="form-control" id="history" name="history" style="height: 200px" placeholder="History and origins"></textarea>
+                        <label for="history">History and origins</label>
+                        @if ($errors->has('history'))
+                          <span class="text-danger">{{ $errors->first('history') }}</span>
+                        @endif
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -116,27 +114,30 @@
                 <div role="separator" class="dropdown-divider m-0 mb-4"></div>
                 <div class="row push">
                   <div class="col-lg-12 d-flex flex-column flex-lg-row justify-content-lg-center">
-                    <div class="form-floating mb-4 mt-2 col-lg-5">
-                      <textarea class="form-control" id="evolution" name="evolution" style="height: 200px" placeholder="Evolution during the story"></textarea>
-                      <label for="evolution">Evolution during the story</label>
-                      @if ($errors->has('evolution'))
-                        <span class="text-danger">{{ $errors->first('evolution') }}</span>
-                      @endif
+                    <div class="mb-4 mt-2 col-lg-6 p-lg-3">
+                      <div class="form-floating">
+                        <textarea class="form-control" id="evolution" name="evolution" style="height: 200px" placeholder="Evolution during the story"></textarea>
+                        <label for="evolution">Evolution during the story</label>
+                        @if ($errors->has('evolution'))
+                          <span class="text-danger">{{ $errors->first('evolution') }}</span>
+                        @endif
+                      </div>
                     </div>
-                    <div class="col-lg-1"></div>
-                    <div class="form-floating mb-4 mt-2 col-lg-5">
-                      <textarea class="form-control" id="motivation" name="motivation" style="height: 200px" placeholder="Motivations place in the story"></textarea>
-                      <label for="motivation">Motivations place in the story</label>
-                      @if ($errors->has('motivation'))
-                        <span class="text-danger">{{ $errors->first('motivation') }}</span>
-                      @endif
+                    <div class="mb-4 mt-2 col-lg-6 p-lg-3">
+                      <div class="form-floating">
+                        <textarea class="form-control" id="motivation" name="motivation" style="height: 200px" placeholder="Motivations place in the story"></textarea>
+                        <label for="motivation">Motivations place in the story</label>
+                        @if ($errors->has('motivation'))
+                          <span class="text-danger">{{ $errors->first('motivation') }}</span>
+                        @endif
+                      </div>
                     </div>
                   </div>
                 </div>
                 
                 <div role="separator" class="dropdown-divider m-0 mb-4"></div>
 
-                <div class="row push">
+                <div class="row push p-lg-3">
                   <div class="col-lg-12">
                     <div class="form-floating">
                       <textarea class="form-control" id="additional_information" name="additional_information" style="height: 200px" placeholder="Additional Information"></textarea>
@@ -147,25 +148,17 @@
                     </div>    
                   </div>
                 </div>
-
-                <!-- Submit -->
                 <div class="row items-push">
                   <div class="col-xl-12 d-flex justify-content-between">
                     <button type="button" class="btn btn-warning btn_add_scene">Delete</button>
                     <button type="submit" class="btn btn-primary">Save</button>
                   </div>
                 </div>
-                <!-- END Submit -->
-                
               </div>
             </div>
           </form>
         </div>
       </div>
-      <!-- END User Profile -->
-
-      
     </div>
-    <!-- END Page Content -->
 
 @endsection

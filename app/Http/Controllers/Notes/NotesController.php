@@ -82,4 +82,8 @@ class NotesController extends Controller
     {
         //
     }
+
+    public function get_notes(){
+        return view('notes.view');
+    }
 }

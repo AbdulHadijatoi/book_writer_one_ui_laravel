@@ -3,9 +3,7 @@
 @section('title','Character1')
 @section('content')
 
-    <!-- Page Content -->
     <div class="content content-boxed">
-      <!-- User Profile -->
       <div class="block block-rounded">
         <div class="block-header block-header-default">
           <h3 class="block-title">Character1</h3>
@@ -150,25 +148,17 @@
                     </div>    
                   </div>
                 </div>
-
-                <!-- Submit -->
                 <div class="row items-push">
                   <div class="col-xl-12 d-flex justify-content-between">
                     <button type="button" class="btn btn-warning btn_add_scene">Delete</button>
                     <button type="submit" class="btn btn-primary">Save</button>
                   </div>
                 </div>
-                <!-- END Submit -->
-                
               </div>
             </div>
           </form>
         </div>
       </div>
-      <!-- END User Profile -->
-
-      
     </div>
-    <!-- END Page Content -->
 
 @endsection

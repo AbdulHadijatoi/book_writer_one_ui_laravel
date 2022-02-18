@@ -83,4 +83,8 @@ class TechnologyController extends Controller
     {
         //
     }
+
+    public function get_technology(){
+        return view('universe.technology.view');
+    }
 }

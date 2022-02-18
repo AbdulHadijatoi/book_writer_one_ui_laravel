@@ -43,21 +43,29 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('chapters/view', [ChaptersController::class, 'get_chapter'])->name('view_chapter');
     Route::get('characters', [CharactersController::class, 'index'])->name('create_character');
     Route::get('characters/view', [CharactersController::class, 'get_character'])->name('view_character');
-    Route::resource('geography', GeographyController::class);
+    Route::get('geography', [GeographyController::class, 'index'])->name('create_geography');
+    Route::get('geography/view', [GeographyController::class, 'get_geography'])->name('view_geography');
     Route::resource('illustrations', IllustrationsController::class);
-    Route::resource('notes', NotesController::class);
+    Route::get('notes', [NotesController::class, 'index'])->name('create_notes');
+    Route::get('notes/view', [NotesController::class, 'get_notes'])->name('view_notes');
     Route::resource('sources', SourcesController::class);
     Route::get('str_chapters', [ChaptersController::class, 'index'])->name('create_str_chapter');
     Route::get('str_chapters/view', [ChaptersController::class, 'get_chapter'])->name('view_str_chapter');
     Route::resource('structure', StructureController::class);
     Route::view('/universe', 'universe/index')->name('universeList');
     Route::group(['prefix' => 'universe'], function () {
-        Route::resource('/bestiary', BestiaryController::class);
-        Route::resource('/civilization', CivilizationController::class);
-        Route::resource('/magic', MagicController::class);
-        Route::resource('/myths-and-legends', MythsAndLegendsController::class);
-        Route::resource('/technology', TechnologyController::class);
-        Route::resource('/other', OtherController::class);
+        Route::get('/bestiary', [BestiaryController::class,'index'])->name('create_bestiary');
+        Route::get('/bestiary/view', [BestiaryController::class,'get_bestiary'])->name('view_bestiary');
+        Route::get('/civilization', [CivilizationController::class,'index'])->name('create_civilization');
+        Route::get('/civilization/view', [CivilizationController::class,'get_civilization'])->name('view_civilization');
+        Route::get('/magic', [MagicController::class,'index'])->name('create_magic');
+        Route::get('/magic/view', [MagicController::class,'get_magic'])->name('view_magic');
+        Route::get('/myths-and-legends', [MythsAndLegendsController::class,'index'])->name('create_myths_and_legends');
+        Route::get('/myths-and-legends/view', [MythsAndLegendsController::class,'get_myths_and_legends'])->name('view_myths_and_legends');
+        Route::get('/technology', [TechnologyController::class,'index'])->name('create_technology');
+        Route::get('/technology/view', [TechnologyController::class,'get_technology'])->name('view_technology');
+        Route::get('/other', [OtherController::class,'index'])->name('create_other');
+        Route::get('/other/view', [OtherController::class,'get_other'])->name('view_other');
     });
 });
 

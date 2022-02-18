@@ -82,4 +82,8 @@ class BestiaryController extends Controller
     {
         //
     }
+
+    public function get_bestiary(){
+        return view('universe.bestiary.view');
+    }
 }

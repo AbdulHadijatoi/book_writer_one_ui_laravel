@@ -82,4 +82,8 @@ class MagicController extends Controller
     {
         //
     }
+
+    public function get_magic(){
+        return view('universe.magic.view');
+    }
 }

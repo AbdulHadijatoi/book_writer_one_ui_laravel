@@ -82,4 +82,8 @@ class GeographyController extends Controller
     {
         //
     }
+
+    public function get_geography(){
+        return view('geography.view');
+    }
 }

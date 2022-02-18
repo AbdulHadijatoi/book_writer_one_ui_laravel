@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','Geography')
+@section('title','Geography1')
 @section('content')
     
     <div class="content">
@@ -11,7 +11,7 @@
           <div class="col-md-12">
             <div class="block block-rounded">
               <div class="block-header block-header-default">
-                <h3 class="block-title">Geography</h3>
+                <h3 class="block-title">Geography1</h3>
                 <div class="block-options">
                   <button type="button" class="btn-block-option" data-toggle="block-option" data-action="fullscreen_toggle"></button>
                   <button type="button" class="btn-block-option" data-toggle="block-option" data-action="content_toggle"></button>
