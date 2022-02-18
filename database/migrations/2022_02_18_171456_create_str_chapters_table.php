@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('str__chapters', function (Blueprint $table) {
+        Schema::create('str_chapters', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->integer('chapter_type_id')->nullable();
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('str__chapters');
+        Schema::dropIfExists('str_chapters');
     }
 };

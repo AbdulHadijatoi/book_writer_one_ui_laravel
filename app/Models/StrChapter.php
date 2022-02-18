@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Str_Chapter extends Model
+class StrChapter extends Model
 {
     use HasFactory;
 
