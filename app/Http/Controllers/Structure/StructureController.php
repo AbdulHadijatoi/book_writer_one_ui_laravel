@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Structure;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Structure;
+use App\Models\Book;
+use Illuminate\Support\Facades\Auth;
 
 class StructureController extends Controller
 {
@@ -14,7 +17,9 @@ class StructureController extends Controller
      */
     public function index()
     {
-        return view('/structure/index');
+        $user_id = Auth::id();
+        $structure = Structure::where('user_id',$user_id)->first();
+        return view('/structure/index',['structure'=>$structure]);
     }
 
     /**
@@ -35,7 +40,12 @@ class StructureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->request->add(['user_id' => Auth::id(),'book_id' => Book::where('user_id',Auth::id())->first()->id]);
+        Structure::updateOrCreate(
+            ['user_id' =>  $request->user_id],
+            $request->input()
+        );
+        return back()->withSuccess('Successfully added!');
     }
 
     /**

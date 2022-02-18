@@ -3,7 +3,7 @@
 @section('title','Structure')
 @section('content')
     <div class="content">
-        <form class="js-validation" action="{{route('bookinfo.index')}}" method="POST">
+        <form class="js-validation" action="{{route('structure.store')}}" method="POST">
           @csrf
             <div class="block block-rounded">
               <div class="block-header block-header-default">
@@ -14,7 +14,7 @@
                 <div class="row items-push">
                   <div class="col-xl-12 m-auto">
                     <div class="form-floating mb-4">
-                      <textarea class="form-control" id="structure" name="structure" style="height: 600px" placeholder="Structure (storyboard)"></textarea>
+                      <textarea class="form-control" id="structure" name="structure" style="height: 600px" placeholder="Structure (storyboard)">{{$structure->structure ?? ''}}</textarea>
                       <label for="structure">Structure</label>
                       @if ($errors->has('structure'))
                         <span class="text-danger">{{ $errors->first('structure') }}</span>

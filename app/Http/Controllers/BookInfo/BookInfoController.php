@@ -4,6 +4,8 @@ namespace App\Http\Controllers\BookInfo;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Book;
+use Illuminate\Support\Facades\Auth;
 
 class BookInfoController extends Controller
 {
@@ -14,7 +16,9 @@ class BookInfoController extends Controller
      */
     public function index()
     {
-        return view('/bookinfo/index');
+        $user_id = Auth::id();
+        $book_info = Book::where('user_id',$user_id)->first();
+        return view('/bookinfo/index',['bookInfo'=>$book_info]);
     }
 
     /**
@@ -35,7 +39,13 @@ class BookInfoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->request->add(['user_id' => Auth::id()]);
+        Book::updateOrCreate(
+            ['user_id' =>  $request->user_id],
+            $request->input()
+        );
+        // return $request->input();
+        return back()->withSuccess('Successfully added!');
     }
 
     /**

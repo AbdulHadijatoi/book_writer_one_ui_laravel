@@ -3,7 +3,7 @@
 @section('title','Basic Information')
 @section('content')
     <!-- Hero -->
-    {{-- <div class="bg-body-light">
+    <div class="bg-body-light">
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
                 <div class="flex-grow-1">
@@ -17,7 +17,7 @@
                 <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
                         <li class="breadcrumb-item">
-                            <a class="link-fx" href="javascript:void(0)">App</a>
+                            <a class="link-fx" href="javascript:void(0)">BookWriter</a>
                         </li>
                         <li class="breadcrumb-item" aria-current="page">
                             Book
@@ -26,12 +26,12 @@
                 </nav>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!-- END Hero -->
 
     <!-- Page Content -->
     <div class="content">
-        <form class="js-validation" action="{{route('bookinfo.index')}}" method="POST">
+        <form class="js-validation" action="{{route('bookinfo.store')}}" method="POST">
           @csrf
             <div class="block block-rounded">
               <div class="block-header block-header-default">
@@ -43,7 +43,7 @@
                   {{-- Titre Auteur Genre Themes --}}
                   <div class="col-xl-12 m-auto">
                     <div class="form-floating mb-4">
-                      <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+                      <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="{{$bookInfo->title ?? ''}}">
                       <label for="title">Title</label>
                       @if ($errors->has('title'))
                         <span class="text-danger">{{ $errors->first('title') }}</span>
@@ -53,14 +53,14 @@
                     <div role="separator" class="dropdown-divider m-0 mb-4"></div>
 
                     <div class="form-floating mb-4">
-                      <input type="text" class="form-control" id="author" name="author" placeholder="Author">
+                      <input type="text" class="form-control" id="author" name="author" placeholder="Author" value="{{$bookInfo->author ?? ''}}">
                       <label for="author">Author</label>
                       @if ($errors->has('author'))
                         <span class="text-danger">{{ $errors->first('author') }}</span>
                       @endif
                     </div>
                     <div class="form-floating mb-4">
-                      <input type="text" class="form-control" id="genre" name="genre" placeholder="Genre">
+                      <input type="text" class="form-control" id="genre" name="genre" placeholder="Genre" value="{{$bookInfo->genre ?? ''}}">
                       <label for="genre">Genre</label>
                       @if ($errors->has('genre'))
                         <span class="text-danger">{{ $errors->first('genre') }}</span>
@@ -70,8 +70,8 @@
                     <div role="separator" class="dropdown-divider m-0 mb-4"></div>
 
                     <div class="form-floating mb-4">
-                      <textarea class="form-control" id="themes" name="themes" style="height: 200px" placeholder="Theme"></textarea>
-                      <label for="themes">Comments</label>
+                      <input type="text" class="form-control" id="themes" name="themes" placeholder="Themes" value="{{$bookInfo->themes ?? ''}}">
+                      <label for="themes">Themes</label>
                       @if ($errors->has('themes'))
                         <span class="text-danger">{{ $errors->first('themes') }}</span>
                       @endif
@@ -80,7 +80,7 @@
                     <div role="separator" class="dropdown-divider m-0 mb-4"></div>
 
                     <div class="form-floating mb-4">
-                      <textarea class="form-control" id="summery" name="summery" style="height: 200px" placeholder="Summery"></textarea>
+                      <textarea class="form-control" id="summery" name="summery" style="height: 200px" placeholder="Summery">{{$bookInfo->summery ?? ''}}</textarea>
                       <label for="summery">Summery</label>
                       @if ($errors->has('summery'))
                         <span class="text-danger">{{ $errors->first('summery') }}</span>
