@@ -3,7 +3,7 @@
 @section('title','Basic Information')
 @section('content')
     <!-- Hero -->
-    <div class="bg-body-light">
+    {{-- <div class="bg-body-light">
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
                 <div class="flex-grow-1">
@@ -26,7 +26,7 @@
                 </nav>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- END Hero -->
 
     <!-- Page Content -->
@@ -40,44 +40,61 @@
               <br/>
               <div class="block-content block-content-full">
                 <div class="row items-push">
+                  {{-- Titre Auteur Genre Themes --}}
                   <div class="col-xl-12 m-auto">
-                    {{-- Titre Auteur Genre Themes --}}
-                    <div class="mb-4">
-                      <label class="form-label" for="title">Title <span class="text-danger">*</span></label>
+                    <div class="form-floating mb-4">
                       <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+                      <label for="title">Title</label>
                       @if ($errors->has('title'))
                         <span class="text-danger">{{ $errors->first('title') }}</span>
                       @endif
                     </div>
-                    <div class="mb-4">
-                      <label class="form-label" for="author">Author <span class="text-danger">*</span></label>
+
+                    <div role="separator" class="dropdown-divider m-0 mb-4"></div>
+
+                    <div class="form-floating mb-4">
                       <input type="text" class="form-control" id="author" name="author" placeholder="Author">
+                      <label for="author">Author</label>
                       @if ($errors->has('author'))
                         <span class="text-danger">{{ $errors->first('author') }}</span>
                       @endif
                     </div>
-                    <div class="mb-4">
-                      <label class="form-label" for="genre">Genre <span class="text-danger">*</span></label>
+                    <div class="form-floating mb-4">
                       <input type="text" class="form-control" id="genre" name="genre" placeholder="Genre">
+                      <label for="genre">Genre</label>
                       @if ($errors->has('genre'))
                         <span class="text-danger">{{ $errors->first('genre') }}</span>
                       @endif
                     </div>
-                    <div class="mb-4">
-                      <label class="form-label" for="themes">Themes <span class="text-danger">*</span></label>
-                      <input type="text" class="form-control" id="themes" name="themes" placeholder="Themes">
+
+                    <div role="separator" class="dropdown-divider m-0 mb-4"></div>
+
+                    {{-- <div class="form-floating mb-4">
+                      <select class="form-select" id="example-select-floating" name="example-select-floating" aria-label="Floating label select example">
+                        <option selected>Select an option</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
+                      <label for="example-select-floating">Category</label>
+                    </div> --}}
+                    <div class="form-floating mb-4">
+                      <textarea class="form-control" id="themes" name="themes" style="height: 200px" placeholder="Theme"></textarea>
+                      <label for="themes">Comments</label>
                       @if ($errors->has('themes'))
                         <span class="text-danger">{{ $errors->first('themes') }}</span>
                       @endif
                     </div>
-                    <div class="mb-4">
-                      <label class="form-label" for="summery">Summery <span class="text-danger">*</span></label>
-                      <textarea class="form-control" id="summery" name="summery" rows="5" placeholder="Summery (Synopsis)"></textarea>
+
+                    <div role="separator" class="dropdown-divider m-0 mb-4"></div>
+
+                    <div class="form-floating mb-4">
+                      <textarea class="form-control" id="summery" name="summery" style="height: 200px" placeholder="Summery"></textarea>
+                      <label for="summery">Summery</label>
                       @if ($errors->has('summery'))
                         <span class="text-danger">{{ $errors->first('summery') }}</span>
                       @endif
                     </div>
-                    
                   </div>
                 </div>
                 <!-- END Advanced -->
@@ -85,7 +102,7 @@
                 <!-- Submit -->
                 <div class="row items-push">
                   <div class="col-xl-12 d-flex justify-content-end">
-                    <button type="submit" class="btn btn-alt-primary">Save</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                   </div>
                 </div>
                 <!-- END Submit -->

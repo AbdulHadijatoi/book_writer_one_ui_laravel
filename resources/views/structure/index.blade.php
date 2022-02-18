@@ -3,17 +3,17 @@
 @section('title','Structure')
 @section('content')
     <!-- Hero -->
-    <div class="bg-body-light">
+    {{-- <div class="bg-body-light">
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
                 <div class="flex-grow-1">
                     <h1 class="h3 fw-bold mb-2">
                         Structure
-                    </h1>
+                    </h1> --}}
                     {{-- <h2 class="fs-base lh-base fw-medium text-muted mb-0">
                       plan du récit (Storyboard basically)
                     </h2> --}}
-                </div>
+                {{-- </div>
                 <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
                         <li class="breadcrumb-item">
@@ -26,7 +26,7 @@
                 </nav>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- END Hero -->
 
     <!-- Page Content -->
@@ -41,21 +41,22 @@
               <div class="block-content block-content-full">
                 <div class="row items-push">
                   <div class="col-xl-12 m-auto">
-                    <div class="mb-4">
-                      <label class="form-label" for="structure">Structure <span class="text-danger">*</span></label>
-                      <textarea class="form-control" id="structure" name="structure" rows="20" placeholder="Structure (storyboard)"></textarea>
+                    <div class="form-floating mb-4">
+                      <textarea class="form-control" id="structure" name="structure" style="height: 600px" placeholder="Structure (storyboard)"></textarea>
+                      <label for="structure">Structure</label>
                       @if ($errors->has('structure'))
                         <span class="text-danger">{{ $errors->first('structure') }}</span>
                       @endif
                     </div>
                   </div>
+                  
                 </div>
                 <!-- END Advanced -->
 
                 <!-- Submit -->
                 <div class="row items-push">
                   <div class="col-xl-12 d-flex justify-content-end">
-                    <button type="submit" class="btn btn-alt-primary">Save</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                   </div>
                 </div>
                 <!-- END Submit -->

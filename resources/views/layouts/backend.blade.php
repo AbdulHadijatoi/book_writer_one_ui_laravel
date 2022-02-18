@@ -109,19 +109,35 @@
                                 </ul>
                             </li>
                             <li class="nav-main-item {{ (request()->is('chapters*')) ? 'open' : '' }}">
-                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('chapters*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('chapters*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('chapters.index')}}">
                                     <i class="nav-main-link-icon fa fa-receipt"></i>
                                     <span class="nav-main-link-name">Chapters</span>
                                 </a>
+
+                                <ul class="nav-main-submenu">
+                                    <li class="nav-main-item">
+                                        <a class="nav-main-link {{ (request()->is('chapters/chapter1*')) ? 'active' : '' }}" href="{{url('/')}}">
+                                            <span class="nav-main-link-name">Chapter-1</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="nav-main-item {{ (request()->is('characters*')) ? 'open' : '' }}">
-                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('characters*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('characters*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('characters.index')}}">
                                     <i class="nav-main-link-icon fa fa-skating"></i>
                                     <span class="nav-main-link-name">Characters</span>
                                 </a>
+
+                                <ul class="nav-main-submenu">
+                                    <li class="nav-main-item">
+                                        <a class="nav-main-link {{ (request()->is('characters/character1*')) ? 'active' : '' }}" href="{{url('/')}}">
+                                            <span class="nav-main-link-name">Character-1</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="nav-main-item {{ (request()->is('geography*')) ? 'open' : '' }}">
-                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('geography*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('geography*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('geography.index')}}">
                                     <i class="nav-main-link-icon fa fa-spinner"></i>
                                     <span class="nav-main-link-name">Geography</span>
                                 </a>
@@ -131,27 +147,35 @@
                                     <i class="nav-main-link-icon fa fa-star-of-david"></i>
                                     <span class="nav-main-link-name">Universe</span>
                                 </a>
+                                {{-- Myths and Legends, Civilization, Bestiary, Magic, Technology, Other --}}
+                                <ul class="nav-main-submenu">
+                                    <li class="nav-main-item">
+                                        <a class="nav-main-link {{ (request()->is('characters/character1*')) ? 'active' : '' }}" href="{{url('/')}}">
+                                            <span class="nav-main-link-name">Character-1</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="nav-main-item {{ (request()->is('illustrations*')) ? 'open' : '' }}">
-                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('illustrations*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('illustrations*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('structure.index')}}">
                                     <i class="nav-main-link-icon fa fa-image"></i>
                                     <span class="nav-main-link-name">Illustrations</span>
                                 </a>
                             </li>
                             <li class="nav-main-item {{ (request()->is('notes*')) ? 'open' : '' }}">
-                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('notes*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('notes*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('structure.index')}}">
                                     <i class="nav-main-link-icon si si-pencil"></i>
                                     <span class="nav-main-link-name">Notes</span>
                                 </a>
                             </li>
                             <li class="nav-main-item {{ (request()->is('sources*')) ? 'open' : '' }}">
-                                <a class="nav-main-link {{ (request()->is('sources*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                                <a class="nav-main-link {{ (request()->is('sources*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('structure.index')}}">
                                     <i class="nav-main-link-icon si si-list"></i>
                                     <span class="nav-main-link-name">Sources</span>
                                 </a>
                             </li>
                             <li class="nav-main-item {{ (request()->is('cards*')) ? 'open' : '' }}">
-                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('cards*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('cards*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('structure.index')}}">
                                     <i class="nav-main-link-icon fa fa-heart"></i>
                                     <span class="nav-main-link-name">Cards</span>
                                 </a>
