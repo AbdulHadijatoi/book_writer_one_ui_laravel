@@ -1,44 +1,16 @@
 @extends('layouts.backend')
 
-@section('title','Structure')
+@section('title','Chapter Structure')
 @section('content')
-    <!-- Hero -->
-    {{-- <div class="bg-body-light">
-        <div class="content content-full">
-            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
-                <div class="flex-grow-1">
-                    <h1 class="h3 fw-bold mb-2">
-                      Chapters Structure
-                    </h1>
-                    <h2 class="fs-base lh-base fw-medium text-muted mb-0">
-                      Storyboard chapter by chapter basically
-                    </h2>
-                </div>
-                <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
-                    <ol class="breadcrumb breadcrumb-alt">
-                        <li class="breadcrumb-item">
-                            <a class="link-fx" href="javascript:void(0)">App</a>
-                        </li>
-                        <li class="breadcrumb-item" aria-current="page">
-                            Str. Chapter
-                        </li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div> --}}
-    <!-- END Hero -->
-
-    <!-- Page Content -->
+    
     <div class="content ">
       <form id="str_chapter_form" class="js-validation" action="{{route('bookinfo.index')}}" method="POST">
         @csrf
-        <!-- Interactive Options -->
         <div class="row">
           <div class="col-md-12">
             <div class="block block-rounded">
               <div class="block-header block-header-default">
-                <h3 class="block-title">Chapter Card</h3>
+                <h3 class="block-title">Chapter Structure</h3>
                 <div class="block-options">
                   <button type="button" class="btn-block-option" data-toggle="block-option" data-action="fullscreen_toggle"></button>
                   <button type="button" class="btn-block-option" data-toggle="block-option" data-action="content_toggle"></button>
@@ -53,15 +25,15 @@
                         <div class="items-push mb-4 m-auto col-xl-11 d-flex justify-content-between flex-column flex-lg-row">
                             <div>
                               <label class="form-label" for="">Chapter Type<span class="text-danger">*</span></label>
-                              <select class="js-select2 form-select" id="chapter_type" name="chapter_type" style="width: 100%;" data-placeholder="Chapter Type">
+                              <select class="js-select2 form-select" id="chapter_type_id" name="chapter_type_id" style="width: 100%;" data-placeholder="Chapter Type">
                                 <option selected disabled>Chapter Type</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                <option value="Normal Chapter">Normal Chapter</option>
-                                <option value="Interlude">Interlude</option>
-                                <option value="Prologue">Prologue</option>
-                                <option value="Epilogue">Epilogue</option>
+                                <option value="1">Normal Chapter</option>
+                                <option value="2">Interlude</option>
+                                <option value="3">Prologue</option>
+                                <option value="4">Epilogue</option>
                               </select>
-                              @if ($errors->has('chapter_type'))
-                                <span class="text-danger">{{ $errors->first('chapter_type') }}</span>
+                              @if ($errors->has('chapter_type_id'))
+                                <span class="text-danger">{{ $errors->first('chapter_type_id') }}</span>
                               @endif
                             </div>
 
@@ -112,25 +84,24 @@
                         <div role="separator" class="dropdown-divider m-0 mb-4"></div>
 
                         <div class="form-floating mb-4">
-                          <textarea class="form-control" id="scene_abstract" name="scene_abstract" style="height: 200px" placeholder="Abstract"></textarea>
-                          <label for="scene_abstract">Abstract</label>
-                          @if ($errors->has('scene_abstract'))
-                            <span class="text-danger">{{ $errors->first('scene_abstract') }}</span>
+                          <textarea class="form-control" id="chapter_abstract" name="chapter_abstract" style="height: 200px" placeholder="Abstract"></textarea>
+                          <label for="chapter_abstract">Abstract</label>
+                          @if ($errors->has('chapter_abstract'))
+                            <span class="text-danger">{{ $errors->first('chapter_abstract') }}</span>
                           @endif
                         </div>
                         
                         <div role="separator" class="dropdown-divider m-0 mb-4"></div>
 
                         <div class="form-floating mb-4">
-                          <textarea class="form-control" id="scene_issues" name="scene_issues" style="height: 200px" placeholder="Enjeux et place dans le recit"></textarea>
-                          <label for="scene_issues">Issues and place in the story</label>
-                          @if ($errors->has('scene_issues'))
-                            <span class="text-danger">{{ $errors->first('scene_issues') }}</span>
+                          <textarea class="form-control" id="chapter_issues" name="chapter_issues" style="height: 200px" placeholder="Enjeux et place dans le recit"></textarea>
+                          <label for="chapter_issues">Issues and place in the story</label>
+                          @if ($errors->has('chapter_issues'))
+                            <span class="text-danger">{{ $errors->first('chapter_issues') }}</span>
                           @endif
                         </div>
                       </div>
                     </div>
-                    <!-- END Advanced -->
                   </div>
                 </div>
               </div>
@@ -138,7 +109,6 @@
           </div>
         </div>
 
-        <!-- Interactive Options -->
         <div id="row1" class="row">
           <div class="col-md-12">
             <div class="block block-rounded">
@@ -214,13 +184,11 @@
             </div>
           </div>
         </div>
-
       </form>
-      <!-- END Form --> 
     </div>
-    <!-- END Page Content -->
 
-    {{-- @push('script_2') --}}
+@section('js_after')
+
 <script type="text/javascript">   
     // var postURL = "<?php echo url('addmore'); ?>";
     var i=1;
@@ -413,6 +381,8 @@
       }
     }
 </script>
+
+@endsection
 
 @endsection
 

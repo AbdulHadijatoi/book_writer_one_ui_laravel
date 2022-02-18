@@ -25,7 +25,7 @@
                       <div class="col-xl-12 m-auto">
                         
                         <div class="form-floating mb-4">
-                          <input type="text" class="form-control" id="place_name" name="place_name" placeholder="Place name}">
+                          <input type="text" class="form-control" id="place_name" name="place_name" placeholder="Place name">
                           <label for="place_name">Place name</label>
                           @if ($errors->has('place_name'))
                             <span class="text-danger">{{ $errors->first('place_name') }}</span>

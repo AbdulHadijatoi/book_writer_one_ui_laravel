@@ -2,31 +2,7 @@
 
 @section('title','Chapters')
 @section('content')
-    <!-- Hero -->
-    {{-- <div class="bg-body-light">
-        <div class="content content-full">
-            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
-                <div class="flex-grow-1">
-                    <h1 class="h3 fw-bold mb-2">
-                        Chapters
-                    </h1>
-                </div>
-                <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
-                    <ol class="breadcrumb breadcrumb-alt">
-                        <li class="breadcrumb-item">
-                            <a class="link-fx" href="javascript:void(0)">App</a>
-                        </li>
-                        <li class="breadcrumb-item" aria-current="page">
-                            Chapters
-                        </li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div> --}}
-    <!-- END Hero -->
-
-    <!-- Page Content -->
+    
     <div class="content">
         <form class="js-validation" action="{{route('bookinfo.index')}}" method="POST">
           @csrf
@@ -51,12 +27,12 @@
                     <div class="items-push m-auto col-xl-12 d-flex justify-content-between flex-column flex-lg-row">
                       <div>
                         <label class="form-label" for="">Chapter Type<span class="text-danger">*</span></label>
-                        <select class="js-select2 form-select" id="chapter_type" name="chapter_type" style="width: 100%;" data-placeholder="Chapter Type">
+                        <select class="js-select2 form-select" id="chapter_type_id" name="chapter_type_id" style="width: 100%;" data-placeholder="Chapter Type">
                           <option selected disabled>Chapter Type</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                          <option value="Normal Chapter">Normal Chapter</option>
-                          <option value="Interlude">Interlude</option>
-                          <option value="Prologue">Prologue</option>
-                          <option value="Epilogue">Epilogue</option>
+                          <option value="1">Normal Chapter</option>
+                          <option value="2">Interlude</option>
+                          <option value="3">Prologue</option>
+                          <option value="4">Epilogue</option>
                         </select>
                       </div>
 
@@ -64,7 +40,7 @@
 
                       <div>
                         <label class="form-label" for="chapter_number">Number of the chapter <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" id="chapter_number" name="chapter_number" placeholder="Chapter number" min="1">
+                        <input type="chapter_number" class="form-control" id="chapter_number" name="chapter_number" placeholder="Chapter number" min="1">
                         @if ($errors->has('chapter_number'))
                           <span class="text-danger">{{ $errors->first('chapter_number') }}</span>
                         @endif
@@ -89,9 +65,7 @@
                       @endif
                     </div>
                   </div>
-                  
                 </div>
-                <!-- END Advanced -->
 
                 <!-- Submit -->
                 <div class="row items-push">
@@ -105,8 +79,6 @@
               </div>
             </div>
           </form>
-          <!-- jQuery Validation -->
         </div>
     </div>
-    <!-- END Page Content -->
 @endsection

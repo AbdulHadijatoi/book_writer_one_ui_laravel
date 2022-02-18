@@ -46,12 +46,12 @@
                       <option value="other">Other</option>
                     </select>
                     <label for="gender">Gender</label>
-                    @if ($errors->has('age'))
-                      <span class="text-danger">{{ $errors->first('age') }}</span>
+                    @if ($errors->has('gender'))
+                      <span class="text-danger">{{ $errors->first('gender') }}</span>
                     @endif
                   </div>
                   <div class="form-floating mb-4">
-                    <input type="text" class="form-control" id="age" name="age" placeholder="Age">
+                    <input type="number" class="form-control" id="age" name="age" min="1" placeholder="Age">
                     <label for="age">Age</label>
                     @if ($errors->has('age'))
                       <span class="text-danger">{{ $errors->first('age') }}</span>
@@ -77,7 +77,7 @@
                     <div class="mb-4 mt-2 col-lg-6 p-lg-3">
                       <div class="form-floating">
                         <textarea class="form-control" id="summery" name="summery" style="height: 200px" placeholder="Summery"></textarea>
-                        <label for="summery">Personality</label>
+                        <label for="summery">Summery</label>
                         @if ($errors->has('summery'))
                           <span class="text-danger">{{ $errors->first('summery') }}</span>
                         @endif

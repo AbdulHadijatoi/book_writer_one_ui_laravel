@@ -69,15 +69,6 @@
 
                     <div role="separator" class="dropdown-divider m-0 mb-4"></div>
 
-                    {{-- <div class="form-floating mb-4">
-                      <select class="form-select" id="example-select-floating" name="example-select-floating" aria-label="Floating label select example">
-                        <option selected>Select an option</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                      </select>
-                      <label for="example-select-floating">Category</label>
-                    </div> --}}
                     <div class="form-floating mb-4">
                       <textarea class="form-control" id="themes" name="themes" style="height: 200px" placeholder="Theme"></textarea>
                       <label for="themes">Comments</label>
