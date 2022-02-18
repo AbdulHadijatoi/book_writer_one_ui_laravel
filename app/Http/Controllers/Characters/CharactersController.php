@@ -82,4 +82,8 @@ class CharactersController extends Controller
     {
         //
     }
+
+    public function get_character(){
+        return view('characters.view');
+    }
 }

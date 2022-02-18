@@ -39,13 +39,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('dashboard', DashboardController::class);
     Route::resource('bookinfo', BookInfoController::class);
     Route::resource('cards', CardsController::class);
-    Route::resource('chapters', ChaptersController::class);
-    Route::resource('characters', CharactersController::class);
+    Route::get('chapters', [ChaptersController::class, 'index'])->name('create_chapter');
+    Route::get('chapters/view', [ChaptersController::class, 'get_chapter'])->name('view_chapter');
+    Route::get('characters', [CharactersController::class, 'index'])->name('create_character');
+    Route::get('characters/view', [CharactersController::class, 'get_character'])->name('view_character');
     Route::resource('geography', GeographyController::class);
     Route::resource('illustrations', IllustrationsController::class);
     Route::resource('notes', NotesController::class);
     Route::resource('sources', SourcesController::class);
-    Route::resource('str_chapters', StrChaptersController::class);
+    Route::get('str_chapters', [ChaptersController::class, 'index'])->name('create_str_chapter');
+    Route::get('str_chapters/view', [ChaptersController::class, 'get_chapter'])->name('view_str_chapter');
     Route::resource('structure', StructureController::class);
     Route::view('/universe', 'universe/index')->name('universeList');
     Route::group(['prefix' => 'universe'], function () {

@@ -82,4 +82,8 @@ class ChaptersController extends Controller
     {
         //
     }
+
+    public function get_chapter(){
+        return view('chapters.view');
+    }
 }

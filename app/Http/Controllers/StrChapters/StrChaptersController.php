@@ -82,4 +82,8 @@ class StrChaptersController extends Controller
     {
         //
     }
+
+    public function get_chapter(){
+        return view('str_chapters.view');
+    }
 }

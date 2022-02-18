@@ -82,7 +82,7 @@
                                 </a>
                             </li>
                             
-                            <li class="nav-main-heading">Lorem Ipsum</li>
+                            {{-- <li class="nav-main-heading">Lorem Ipsum</li> --}}
                             <li class="nav-main-item {{ (request()->is('bookinfo*')) ? 'open' : '' }}">
                                 <a class="nav-main-link {{ (request()->is('bookinfo*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="{{route('bookinfo.index')}}">
                                     <i class="nav-main-link-icon fa fa-newspaper"></i>
@@ -96,42 +96,42 @@
                                 </a>
                             </li>
                             <li class="nav-main-item {{ (request()->is('str_chapters*')) ? 'open' : '' }}">
-                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('str_chapter*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('str_chapters.index')}}">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('str_chapters*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('create_str_chapter')}}">
                                     <i class="nav-main-link-icon fa fa-laptop-medical"></i>
                                     <span class="nav-main-link-name">Str. Chapters</span>
                                 </a>
 
                                 <ul class="nav-main-submenu">
                                     <li class="nav-main-item">
-                                        <a class="nav-main-link {{ (request()->is('str_chapter/chapter*')) ? 'active' : '' }}" href="{{url('/')}}">
+                                        <a class="nav-main-link {{ (request()->is('str_chapters/view*')) ? 'active' : '' }}" href="{{route('view_str_chapter')}}">
                                             <span class="nav-main-link-name">Chapter-1</span>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="nav-main-item {{ (request()->is('chapters*')) ? 'open' : '' }}">
-                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('chapters*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('chapters.index')}}">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('chapters*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('create_chapter')}}">
                                     <i class="nav-main-link-icon fa fa-receipt"></i>
                                     <span class="nav-main-link-name">Chapters</span>
                                 </a>
 
                                 <ul class="nav-main-submenu">
                                     <li class="nav-main-item">
-                                        <a class="nav-main-link {{ (request()->is('chapters/chapter1*')) ? 'active' : '' }}" href="{{url('/')}}">
+                                        <a class="nav-main-link {{ (request()->is('chapters/view*')) ? 'active' : '' }}" href="{{route('view_chapter')}}">
                                             <span class="nav-main-link-name">Chapter-1</span>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="nav-main-item {{ (request()->is('characters*')) ? 'open' : '' }}">
-                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('characters*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('characters.index')}}">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('characters*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('create_character')}}">
                                     <i class="nav-main-link-icon fa fa-skating"></i>
                                     <span class="nav-main-link-name">Characters</span>
                                 </a>
 
                                 <ul class="nav-main-submenu">
                                     <li class="nav-main-item">
-                                        <a class="nav-main-link {{ (request()->is('characters/character1*')) ? 'active' : '' }}" href="{{url('/')}}">
+                                        <a class="nav-main-link {{ (request()->is('characters/view*')) ? 'active' : '' }}" href="{{route('view_character')}}">
                                             <span class="nav-main-link-name">Character-1</span>
                                         </a>
                                     </li>
