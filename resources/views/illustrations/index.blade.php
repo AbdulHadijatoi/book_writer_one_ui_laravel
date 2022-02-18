@@ -11,17 +11,16 @@
   <link rel="stylesheet" href="{{ asset('js/plugins/flatpickr/flatpickr.min.css') }}">
 @endsection
 @section('content')
-    
     <div class="content">
       <!-- Dropzone (functionality is auto initialized by the plugin itself in js/plugins/dropzone/dropzone.min.js) -->
       <!-- For more info and examples you can check out http://www.dropzonejs.com/#usage -->
       <div class="block block-rounded">
         <div class="block-header block-header-default">
-          <h3 class="block-title">You can upload your pictures here, drag and drop sections for your file uploads</h3>
+          <h3 class="block-title">You can upload your pictures here</h3>
         </div>
         <div class="block-content block-content-full">
           <div class="row">
-            <div class="col-lg-5 m-auto">
+            <div class="col-lg-12 m-auto">
               <form class="dropzone" action="#"></form>
             </div>
           </div>
@@ -66,7 +65,7 @@
             <div class="options-overlay bg-black-75">
               <div class="options-overlay-content">
 
-                <a class="btn btn-sm btn-primary img-lightbox" href="{{asset('media/photos/photo15@2x.jpg">                  <i class="fa fa-search-plus me-1"></i> ')}}View
+                <a class="btn btn-sm btn-primary img-lightbox" href="{{asset('media/photos/photo15@2x.jpg')}}">                  <i class="fa fa-search-plus me-1"></i>View
                 </a>
                 <a class="btn btn-sm btn-warning" href="javascript:void(0)">
                   <i class="fa fa-trash me-1"></i> Delete
@@ -141,7 +140,7 @@
             <div class="options-overlay bg-black-75">
               <div class="options-overlay-content">
 
-                <a class="btn btn-sm btn-primary img-lightbox" href="{{asset('media/photos/photo15@2x.jpg">                  <i class="fa fa-search-plus me-1"></i> ')}}View
+                <a class="btn btn-sm btn-primary img-lightbox" href="{{asset('media/photos/photo15@2x.jpg')}}">                  <i class="fa fa-search-plus me-1"></i>View
                 </a>
                 <a class="btn btn-sm btn-warning" href="javascript:void(0)">
                   <i class="fa fa-trash me-1"></i> Delete
