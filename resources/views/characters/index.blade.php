@@ -151,8 +151,7 @@
                 <!-- Submit -->
                 <div class="row items-push">
                   <div class="col-xl-12 d-flex justify-content-between">
-
-                    <button type="button" class="btn btn-primary btn_add_scene">Delete</button>
+                    <button type="button" class="btn btn-warning btn_add_scene">Delete</button>
                     <button type="submit" class="btn btn-primary">Save</button>
                   </div>
                 </div>

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Universe;
+namespace App\Http\Controllers\Universe\Bestiary;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class UniverseController extends Controller
+class BestiaryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class UniverseController extends Controller
      */
     public function index()
     {
-        return view('/universe/index');
+        return view('/universe/bestiary/index');
     }
 
     /**

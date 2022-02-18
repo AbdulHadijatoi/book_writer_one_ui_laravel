@@ -11,6 +11,12 @@ use App\Http\Controllers\Notes\NotesController;
 use App\Http\Controllers\Sources\SourcesController;
 use App\Http\Controllers\StrChapters\StrChaptersController;
 use App\Http\Controllers\Structure\StructureController;
+use App\Http\Controllers\Universe\Bestiary\BestiaryController;
+use App\Http\Controllers\Universe\Civilization\CivilizationController;
+use App\Http\Controllers\Universe\Magic\MagicController;
+use App\Http\Controllers\Universe\MythsAndLegends\MythsAndLegendsController;
+use App\Http\Controllers\Universe\Other\OtherController;
+use App\Http\Controllers\Universe\Technology\TechnologyController;
 use App\Http\Controllers\Universe\UniverseController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,7 +47,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('sources', SourcesController::class);
     Route::resource('str_chapters', StrChaptersController::class);
     Route::resource('structure', StructureController::class);
-    Route::resource('universe', UniverseController::class);
+    Route::view('/universe', 'universe/index')->name('universeList');
+    Route::group(['prefix' => 'universe'], function () {
+        Route::resource('/bestiary', BestiaryController::class);
+        Route::resource('/civilization', CivilizationController::class);
+        Route::resource('/magic', MagicController::class);
+        Route::resource('/myths-and-legends', MythsAndLegendsController::class);
+        Route::resource('/technology', TechnologyController::class);
+        Route::resource('/other', OtherController::class);
+    });
 });
 
 

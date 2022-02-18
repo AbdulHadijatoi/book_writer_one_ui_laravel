@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Illustrations;
+namespace App\Http\Controllers\Universe\Technology;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class IllustrationsController extends Controller
+class TechnologyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class IllustrationsController extends Controller
      */
     public function index()
     {
-        return view('/illustrations/index');
+        // return "testing";
+        return view('/universe/technology/index');
     }
 
     /**
@@ -46,7 +47,7 @@ class IllustrationsController extends Controller
      */
     public function show($id)
     {
-        return view('/illustrations/view');
+        //
     }
 
     /**

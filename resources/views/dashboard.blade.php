@@ -17,7 +17,7 @@
                 <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
                         <li class="breadcrumb-item">
-                            <a class="link-fx" href="javascript:void(0)">App</a>
+                            <a class="link-fx" href="javascript:void(0)">BookWriter</a>
                         </li>
                         <li class="breadcrumb-item" aria-current="page">
                             Dashboard
@@ -33,51 +33,82 @@
     <div class="content">
         
         <div class="row row-deck">
-            <div class="col-md-6 col-xl-4">
+            <div class="col-md-12">
                 <div class="block block-rounded">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Welcome</h3>
                     </div>
                     <div class="block-content fs-sm text-muted">
                         <p>
-                            We’ve put everything together, so you can start working on your Laravel project as soon as possible! OneUI assets are integrated and work seamlessly with Laravel Mix, so you can use the npm scripts as you would in any other Laravel project.
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, Nascetur Pellentesque Ridules mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
                         </p>
                         <p>
-                            Feel free to use any examples you like from the full HTML version to build your own pages.
+                            Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis
                         </p>
                         <p>
-                            <strong>Wish you all the best and happy coding!</strong>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4">
-                <div class="block block-rounded">
-                    <div class="block-header block-header-default">
-                        <h3 class="block-title">Block Title</h3>
-                    </div>
-                    <div class="block-content fs-sm text-muted">
-                        <p>
-                            ...
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4">
-                <div class="block block-rounded">
-                    <div class="block-header block-header-default">
-                        <h3 class="block-title">Block Title</h3>
-                    </div>
-                    <div class="block-content fs-sm text-muted">
-                        <p>
-                            ...
+                            <strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</strong>
                         </p>
                     </div>
                 </div>
             </div>
 
-            
+            <div class="col-xl-6">
+                <!-- Lines Chart -->
+                <div class="block block-rounded">
+                  <div class="block-header block-header-default">
+                    <h3 class="block-title">Lines</h3>
+                    <div class="block-options">
+                      <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
+                        <i class="si si-refresh"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="block-content block-content-full text-center">
+                    <div class="py-3">
+                      <!-- Lines Chart Container -->
+                      <canvas id="js-chartjs-lines"></canvas>
+                    </div>
+                  </div>
+                </div>
+                <!-- END Lines Chart -->
+              </div>
+              
+              <div class="col-xl-6">
+                <!-- Radar Chart -->
+                <div class="block block-rounded">
+                  <div class="block-header block-header-default">
+                    <h3 class="block-title">Radar</h3>
+                    <div class="block-options">
+                      <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
+                        <i class="si si-refresh"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="block-content block-content-full text-center">
+                    <div class="py-3 px-xxl-7">
+                      <!-- Radar Chart Container -->
+                      <canvas id="js-chartjs-radar"></canvas>
+                    </div>
+                  </div>
+                </div>
+                <!-- END Radar Chart -->
+              </div>
         </div>
     </div>
     <!-- END Page Content -->
 @endsection
+
+@section('js_after')
+<script src="{{asset('js/lib/jquery.min.js')}}"></script>
+
+<!-- Page JS Plugins -->
+<script src="{{asset('js/plugins/easy-pie-chart/jquery.easypiechart.min.js')}}"></script>
+<script src="{{asset('js/plugins/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
+<script src="{{asset('js/plugins/chart.js/Chart.min.js')}}"></script>
+
+<!-- Page JS Code -->
+<script src="{{asset('js/pages/be_comp_charts.min.js')}}"></script>
+
+<!-- Page JS Helpers (Easy Pie Chart + jQuery Sparkline Plugins) -->
+<script>One.helpersOnLoad(['jq-easy-pie-chart', 'jq-sparkline']);</script>
+@endsection()
