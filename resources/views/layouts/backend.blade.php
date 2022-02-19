@@ -100,14 +100,18 @@
                                     <i class="nav-main-link-icon fa fa-laptop-medical"></i>
                                     <span class="nav-main-link-name">Str. Chapters</span>
                                 </a>
-
-                                <ul class="nav-main-submenu">
-                                    <li class="nav-main-item">
-                                        <a class="nav-main-link {{ (request()->is('str_chapters/view*')) ? 'active' : '' }}" href="{{route('view_str_chapter')}}">
-                                            <span class="nav-main-link-name">Chapter-1</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                                @if(isset($chapters))
+                                    @foreach ( $chapters as $chapter)
+                                        <ul class="nav-main-submenu">
+                                            <li class="nav-main-item">
+                                                {{-- {{ (request()->is('str_chapters/view'.$chapter->chapter_number)) ? 'active' : '' }} --}}
+                                                <a class="nav-main-link" href="{{route('view_str_chapter',$chapter->chapter_number)}}">
+                                                    <span class="nav-main-link-name">Chapter-{{$chapter->chapter_number ?? '0'}}</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    @endforeach
+                                @endif
                             </li>
                             <li class="nav-main-item {{ (request()->is('chapters*')) ? 'open' : '' }}">
                                 <a class="nav-main-link nav-main-link-submenu {{ (request()->is('chapters*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('create_chapter')}}">

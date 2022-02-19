@@ -51,7 +51,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('sources', SourcesController::class);
     Route::get('str_chapters', [StrChaptersController::class, 'index'])->name('create_str_chapter');
     Route::post('str_chapters', [StrChaptersController::class, 'store'])->name('save_str_chapter');
-    Route::get('str_chapters/view', [StrChaptersController::class, 'get_chapter'])->name('view_str_chapter');
+    Route::get('str_chapters/view{number}', [StrChaptersController::class, 'get_chapter'])->name('view_str_chapter');
+    Route::POST('str_chapters/view', [StrChaptersController::class, 'update_chapter'])->name('update_str_chapter');
     Route::resource('structure', StructureController::class);
     Route::view('/universe', 'universe/index')->name('universeList');
     Route::group(['prefix' => 'universe'], function () {
