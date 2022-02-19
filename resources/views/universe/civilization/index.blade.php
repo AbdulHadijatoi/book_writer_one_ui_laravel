@@ -3,6 +3,24 @@
 @section('title','Civilization')
 @section('content')
     <div class="content">
+
+@if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <p class="mb-0">
+            {{ session()->get('success') }}
+          </p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
+      @if(session()->has('failed'))
+        <div class="alert alert-warning alert-dismissible" role="alert">
+          <p class="mb-0">
+            {{ session()->get('failed') }}
+          </p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
+     
       <form id="str_chapter_form" class="js-validation" action="{{route('bookinfo.index')}}" method="POST">
         @csrf
         <div class="row">

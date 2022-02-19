@@ -12,6 +12,24 @@
 @endsection
 @section('content')
     <div class="content">
+
+@if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <p class="mb-0">
+            {{ session()->get('success') }}
+          </p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
+      @if(session()->has('failed'))
+        <div class="alert alert-warning alert-dismissible" role="alert">
+          <p class="mb-0">
+            {{ session()->get('failed') }}
+          </p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
+     
       <!-- Dropzone (functionality is auto initialized by the plugin itself in js/plugins/dropzone/dropzone.min.js) -->
       <!-- For more info and examples you can check out http://www.dropzonejs.com/#usage -->
       <div class="block block-rounded">

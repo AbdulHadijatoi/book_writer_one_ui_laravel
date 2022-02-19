@@ -30,6 +30,24 @@
 
     <!-- Page Content -->
     <div class="content">
+
+@if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <p class="mb-0">
+            {{ session()->get('success') }}
+          </p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
+      @if(session()->has('failed'))
+        <div class="alert alert-warning alert-dismissible" role="alert">
+          <p class="mb-0">
+            {{ session()->get('failed') }}
+          </p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
+     
         <div class="row row-deck">
             <div class="col-md-6 col-xl-4">
                 <div class="block block-rounded">

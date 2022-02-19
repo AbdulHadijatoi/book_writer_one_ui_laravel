@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('notes/view', [NotesController::class, 'get_notes'])->name('view_notes');
     Route::resource('sources', SourcesController::class);
     Route::get('str_chapters', [StrChaptersController::class, 'index'])->name('create_str_chapter');
+    Route::post('str_chapters', [StrChaptersController::class, 'store'])->name('save_str_chapter');
     Route::get('str_chapters/view', [StrChaptersController::class, 'get_chapter'])->name('view_str_chapter');
     Route::resource('structure', StructureController::class);
     Route::view('/universe', 'universe/index')->name('universeList');

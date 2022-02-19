@@ -3,8 +3,27 @@
 @section('title','Chapter Structure')
 @section('content')
     
-    <div class="content ">
-      <form id="str_chapter_form" class="js-validation" action="{{route('bookinfo.index')}}" method="POST">
+    <div class="content">
+
+@if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <p class="mb-0">
+            {{ session()->get('success') }}
+          </p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
+      @if(session()->has('failed'))
+        <div class="alert alert-warning alert-dismissible" role="alert">
+          <p class="mb-0">
+            {{ session()->get('failed') }}
+          </p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
+     
+       
+      <form id="str_chapter_form" class="js-validation" action="{{route('save_str_chapter')}}" method="POST">
         @csrf
         <div class="row">
           <div class="col-md-12">
@@ -25,8 +44,8 @@
                         <div class="items-push mb-4 m-auto col-xl-11 d-flex justify-content-between flex-column flex-lg-row">
                             <div>
                               <label class="form-label" for="">Chapter Type<span class="text-danger">*</span></label>
-                              <select class="js-select2 form-select" id="chapter_type_id" name="chapter_type_id" style="width: 100%;" data-placeholder="Chapter Type">
-                                <option selected disabled>Chapter Type</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                              <select class="js-select2 form-select" id="chapter_type_id" name="chapter_type_id" style="width: 100%;" data-placeholder="Chapter Type" required>
+                                <option selected disabled>Chapter Type</option>
                                 <option value="1">Normal Chapter</option>
                                 <option value="2">Interlude</option>
                                 <option value="3">Prologue</option>
@@ -39,7 +58,7 @@
 
                             <div>
                               <label class="form-label" for="chapter_number">Number of the chapter <span class="text-danger">*</span></label>
-                              <input type="number" class="form-control" id="chapter_number" name="chapter_number" placeholder="Chapter number" min="1">
+                              <input type="number" class="form-control" id="chapter_number" name="chapter_number" placeholder="Chapter number" min="1" required>
                               @if ($errors->has('chapter_number'))
                                 <span class="text-danger">{{ $errors->first('chapter_number') }}</span>
                               @endif
@@ -47,7 +66,7 @@
 
                             <div>
                               <label class="form-label" for="chapter_position">Position of the chapter in the book<span class="text-danger">*</span></label>
-                              <input type="number" class="form-control" id="chapter_position" name="chapter_position" placeholder="Chapter position" min="1">
+                              <input type="number" class="form-control" id="chapter_position" name="chapter_position" placeholder="Chapter position" min="1" required>
                               @if ($errors->has('chapter_position'))
                                 <span class="text-danger">{{ $errors->first('chapter_position') }}</span>
                               @endif
@@ -127,7 +146,7 @@
                         <div class="items-push m-auto col-xl-12 d-flex justify-content-center">
                           <div>
                             <label class="form-label" for="scene_number">Scene number<span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" id="scene_number" name="scene_number[]" placeholder="Scene number" min="1">
+                            <input type="number" class="form-control" id="scene_number" name="scene_number[]" placeholder="Scene number" min="1" required>
                             @if ($errors->has('scene_number'))
                               <span class="text-danger">{{ $errors->first('scene_number') }}</span>
                             @endif
@@ -200,9 +219,13 @@
     //      $('#str_chapter_form').append('<div id="row'+i+'" class="row"> <div class="col-md-12"> <div class="block block-rounded"> <div class="block-header block-header-default"> <h3 class="block-title">Scene</h3> <div class="block-options"> <button type="button" class="btn-block-option" data-toggle="block-option" data-action="fullscreen_toggle"></button> <button type="button" class="btn-block-option" data-toggle="block-option" data-action="content_toggle"></button> </div> </div> <div class="block-content"> <div class="block block-rounded"> <div class="block-content block-content-full"> <div class="row items-push"> <div class="col-xl-12 m-auto"> <div class="items-push mb-4 m-auto col-xl-12 d-flex justify-content-center">  <div> <label class="form-label" for="scene_number'+i+'">Scene number<span class="text-danger">*</span></label> <input type="number" class="form-control" id="scene_number'+i+'" name="scene_number[]" placeholder="Scene number" min="1"> @if ($errors->has("scene_number")) <span class="text-danger">{{ $errors->first("scene_number") }}</span> @endif  </div> </div> <div class="form-floating mb-4">  <input type="text" class="form-control" id="scene_location'+i+'" name="scene_location[]" placeholder="Scene Location">  <label for="scene_location'+i+'">Location</label>  @if ($errors->has("scene_location")) <span class="text-danger">{{ $errors->first("scene_location") }}</span>  @endif </div> <div class="form-floating mb-4">  <input type="text" class="form-control" id="scene_characters'+i+'" name="scene_characters[]" placeholder="Scene Characters">  <label for="scene_characters'+i+'">Characters</label>  @if ($errors->has("scene_characters")) <span class="text-danger">{{ $errors->first("scene_characters") }}</span>  @endif </div> <div class="form-floating mb-4">  <textarea class="form-control" id="scene_issues'+i+'" name="scene_issues[]" style="height: 200px" placeholder="Enjeux et place dans le recit"></textarea>  <label for="scene_issues'+i+'">Issues and place in the story</label>  @if ($errors->has("scene_issues")) <span class="text-danger">{{ $errors->first("scene_issues") }}</span>  @endif </div> <div class="form-floating mb-4">  <textarea class="form-control" id="scene_abstract'+i+'" name="scene_abstract[]" style="height: 200px" placeholder="Abstract"></textarea>  <label for="scene_abstract'+i+'">Abstract</label>  @if ($errors->has("scene_abstract")) <span class="text-danger">{{ $errors->first("scene_abstract") }}</span>  @endif </div> </div> </div> <div class="row items-push"> <div class="col-xl-12 m-auto d-flex justify-content-between"> <button type="button" id="btn_addScene'+i+'" class="btn btn-success btn_add_scene">New Scene</button> <button type="button" id="'+i+'" class="btn btn-primary btn_remove_scene">Delete</button> <button type="submit" class="btn btn-primary">Save</button> </div> </div> </div> </div> </div> </div> </div> </div>');  
     // });  
 
+    
+
     function addScene(){  
          i++;  
-         document.getElementById('str_chapter_form').innerHTML += '<div id="row'+i+'" class="row"> <div class="col-md-12"> <div class="block block-rounded"> <div class="block-header block-header-default"> <h3 class="block-title">Scene</h3> <div class="block-options"> <button type="button" class="btn-block-option" data-toggle="block-option" data-action="fullscreen_toggle"></button> <button type="button" class="btn-block-option" data-toggle="block-option" data-action="content_toggle"></button> </div> </div> <div class="block-content"> <div class="block block-rounded"> <div class="block-content block-content-full"> <div class="row items-push"> <div class="col-xl-12 m-auto"> <div class="items-push m-auto col-xl-12 d-flex justify-content-center">  <div> <label class="form-label" for="scene_number'+i+'">Scene number<span class="text-danger">*</span></label> <input type="number" class="form-control" id="scene_number'+i+'" name="scene_number[]" placeholder="Scene number" min="1"> @if ($errors->has("scene_number")) <span class="text-danger">{{ $errors->first("scene_number") }}</span> @endif  </div> </div> <div role="separator" class="dropdown-divider m-0 mb-4"></div> <div class="form-floating mb-4">  <input type="text" class="form-control" id="scene_location'+i+'" name="scene_location[]" placeholder="Scene Location">  <label for="scene_location'+i+'">Location</label>  @if ($errors->has("scene_location")) <span class="text-danger">{{ $errors->first("scene_location") }}</span>  @endif </div> <div class="form-floating mb-4">  <input type="text" class="form-control" id="scene_characters'+i+'" name="scene_characters[]" placeholder="Scene Characters">  <label for="scene_characters'+i+'">Characters</label>  @if ($errors->has("scene_characters")) <span class="text-danger">{{ $errors->first("scene_characters") }}</span>  @endif </div> <div role="separator" class="dropdown-divider m-0 mb-4"></div> <div class="form-floating mb-4">  <textarea class="form-control" id="scene_issues'+i+'" name="scene_issues[]" style="height: 200px" placeholder="Enjeux et place dans le recit"></textarea>  <label for="scene_issues'+i+'">Issues and place in the story</label>  @if ($errors->has("scene_issues")) <span class="text-danger">{{ $errors->first("scene_issues") }}</span>  @endif </div> <div role="separator" class="dropdown-divider m-0 mb-4"></div> <div class="form-floating mb-4">  <textarea class="form-control" id="scene_abstract'+i+'" name="scene_abstract[]" style="height: 200px" placeholder="Abstract"></textarea>  <label for="scene_abstract'+i+'">Abstract</label>  @if ($errors->has("scene_abstract")) <span class="text-danger">{{ $errors->first("scene_abstract") }}</span>  @endif </div> </div> </div> <div class="row items-push"> <div class="col-xl-12 m-auto d-flex justify-content-between"> <button type="button" id="btn_addScene'+i+'" class="btn btn-success btn_add_scene"  onclick="addScene()">New Scene</button> <button type="button" id="'+i+'" class="btn btn-warning btn_remove_scene" onclick="removeScene(this)">Delete</button> <button type="submit" class="btn btn-primary">Save</button> </div> </div> </div> </div> </div> </div> </div> </div>';
+         let newScene = document.createElement("div");
+        newScene.innerHTML = '<div id="row'+i+'" class="row"> <div class="col-md-12"> <div class="block block-rounded"> <div class="block-header block-header-default"> <h3 class="block-title">Scene</h3> <div class="block-options"> <button type="button" class="btn-block-option" data-toggle="block-option" data-action="fullscreen_toggle"></button> <button type="button" class="btn-block-option" data-toggle="block-option" data-action="content_toggle"></button> </div> </div> <div class="block-content"> <div class="block block-rounded"> <div class="block-content block-content-full"> <div class="row items-push"> <div class="col-xl-12 m-auto"> <div class="items-push m-auto col-xl-12 d-flex justify-content-center">  <div> <label class="form-label" for="scene_number'+i+'">Scene number<span class="text-danger">*</span></label> <input type="number" class="form-control" id="scene_number'+i+'" name="scene_number[]" placeholder="Scene number" min="1" required> @if ($errors->has("scene_number")) <span class="text-danger">{{ $errors->first("scene_number") }}</span> @endif  </div> </div> <div role="separator" class="dropdown-divider m-0 mb-4"></div> <div class="form-floating mb-4">  <input type="text" class="form-control" id="scene_location'+i+'" name="scene_location[]" placeholder="Scene Location">  <label for="scene_location'+i+'">Location</label>  @if ($errors->has("scene_location")) <span class="text-danger">{{ $errors->first("scene_location") }}</span>  @endif </div> <div class="form-floating mb-4">  <input type="text" class="form-control" id="scene_characters'+i+'" name="scene_characters[]" placeholder="Scene Characters">  <label for="scene_characters'+i+'">Characters</label>  @if ($errors->has("scene_characters")) <span class="text-danger">{{ $errors->first("scene_characters") }}</span>  @endif </div> <div role="separator" class="dropdown-divider m-0 mb-4"></div> <div class="form-floating mb-4">  <textarea class="form-control" id="scene_issues'+i+'" name="scene_issues[]" style="height: 200px" placeholder="Enjeux et place dans le recit"></textarea>  <label for="scene_issues'+i+'">Issues and place in the story</label>  @if ($errors->has("scene_issues")) <span class="text-danger">{{ $errors->first("scene_issues") }}</span>  @endif </div> <div role="separator" class="dropdown-divider m-0 mb-4"></div> <div class="form-floating mb-4">  <textarea class="form-control" id="scene_abstract'+i+'" name="scene_abstract[]" style="height: 200px" placeholder="Abstract"></textarea>  <label for="scene_abstract'+i+'">Abstract</label>  @if ($errors->has("scene_abstract")) <span class="text-danger">{{ $errors->first("scene_abstract") }}</span>  @endif </div> </div> </div> <div class="row items-push"> <div class="col-xl-12 m-auto d-flex justify-content-between"> <button type="button" id="btn_addScene'+i+'" class="btn btn-success btn_add_scene"  onclick="addScene()">New Scene</button> <button type="button" id="'+i+'" class="btn btn-warning btn_remove_scene" onclick="removeScene(this)">Delete</button> <button type="submit" class="btn btn-primary">Save</button> </div> </div> </div> </div> </div> </div> </div> </div>';
+         document.getElementById('str_chapter_form').appendChild(newScene);
          reloadRepeatableBlocks();
     } 
 
