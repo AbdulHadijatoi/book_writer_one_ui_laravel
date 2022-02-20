@@ -89,13 +89,14 @@ class MagicController extends Controller
             if($universe == null){
                 return back()->with('failed',"You don't have access to that universe.");
             }
-            $universe = Universe::
+            $universes = Universe::
             where([
                 ['user_id', '=', $user_id],
-                ['book_id', '=', $book->id]
+                ['book_id', '=', $book->id],
+                ['universe_type_id', '=', 3]
             ])->get();
             
-            return view('/universe/magic/view',['m_universe'=>$universe, 'm_universes'=>$universe]);
+            return view('/universe/magic/view',['m_universe'=>$universe, 'm_universes'=>$universes]);
         }
         return back()->with('failed',"You don't have access to that universe.");
     }

@@ -21,7 +21,7 @@
         </div>
       @endif
      
-      <form id="str_chapter_form" class="js-validation" action="{{route('civilization.update',,$c_universe->id)}}" method="POST">
+      <form id="str_chapter_form" class="js-validation" action="{{route('civilization.update',$c_universe->id)}}" method="POST">
         @csrf
         @method('PUT')
         <div class="row">

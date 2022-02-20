@@ -89,13 +89,14 @@ class CivilizationController extends Controller
             if($universe == null){
                 return back()->with('failed',"You don't have access to that universe.");
             }
-            $universe = Universe::
+            $universes = Universe::
             where([
                 ['user_id', '=', $user_id],
-                ['book_id', '=', $book->id]
+                ['book_id', '=', $book->id],
+                ['universe_type_id', '=', 2]
             ])->get();
             
-            return view('/universe/civilization/view',['c_universe'=>$universe, 'c_universes'=>$universe]);
+            return view('/universe/civilization/view',['c_universe'=>$universe, 'c_universes'=>$universes]);
         }
         return back()->with('failed',"You don't have access to that universe.");
     }
