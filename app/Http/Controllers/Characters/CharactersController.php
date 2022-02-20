@@ -133,12 +133,22 @@ class CharactersController extends Controller
         $request->request->add(['user_id' => Auth::id()]);
         $request->request->add(['book_id' => $book->id]);
         
-        Character::updateOrCreate(
+        $character = Character::updateOrCreate(
             ['user_id' =>  $request->user_id,
              'book_id' =>  $request->book_id,
              'id' =>  $id],
             $request->input()
         );
+
+        if( $request->hasFile( 'avatar' ) ) {
+            $destinationPath = storage_path( 'app/public/characters' );
+            $file = $request->avatar;
+            $fileName = time() . '.'.$file->clientExtension();
+            $file->move( $destinationPath, $fileName );
+        
+            $character->avatar = $fileName;
+            $character->save();
+        }
 
         return back()->withSuccess('Successfully Updated!');
     }

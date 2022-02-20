@@ -21,7 +21,7 @@
         </div>
       @endif
      
-    <form class="js-validation" action="{{route('bookinfo.index')}}" method="POST">
+    <form class="js-validation" action="{{route('myths_and_legends.store')}}" method="POST">
       @csrf
         <div class="block block-rounded">
           <div class="block-header block-header-default">
@@ -49,12 +49,10 @@
             </div>
 
             <div class="row items-push">
-              <div class="col-xl-12 d-flex justify-content-between">
-                <button type="button" class="btn btn-warning">Delete</button>
+              <div class="col-xl-12 d-flex justify-content-end">
                 <button type="submit" class="btn btn-primary">Save</button>
               </div>
             </div>
-
             <br/>
           </div>
         </div>

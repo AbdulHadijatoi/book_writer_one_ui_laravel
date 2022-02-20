@@ -23,6 +23,7 @@ class Universe extends Model
         'rules_and_limits', 
         'content', 
         'technical_terms_jargons', 
+        'universe_type_id', 
         'book_id', 
         'user_id' 
     ];

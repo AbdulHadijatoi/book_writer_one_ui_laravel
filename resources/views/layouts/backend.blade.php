@@ -174,92 +174,117 @@
                                 {{-- Myths and Legends, Civilization, Bestiary, Magic, Technology, Other --}}
                                 <ul class="nav-main-submenu">
                                     <li class="nav-main-item {{ (request()->is('universe/myths*')) ? 'open' : '' }}">
-                                      <a class="nav-main-link nav-main-link-submenu {{ (request()->is('universe/myths*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('create_myths_and_legends')}}">
+                                      <a class="nav-main-link nav-main-link-submenu {{ (request()->is('universe/myths*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('myths_and_legends.index')}}">
                                         <i class="nav-main-link-icon fa fa-atom"></i>
                                         <span class="nav-main-link-name">Myths and Legends</span>
                                       </a>
-                                      <ul class="nav-main-submenu">
-                                        <li class="nav-main-item">
-                                          <a class="nav-main-link {{ (request()->is('universe/myths-and-legends/view*')) ? 'active' : '' }}" href="{{route('view_myths_and_legends')}}">
-                                            <span class="nav-main-link-name">Myths-1</span>
-                                          </a>
-                                        </li>
-                                      </ul>
+                                      
+                                        @if(isset($ml_universes))
+                                            @foreach ( $ml_universes as $universe)
+                                                <ul class="nav-main-submenu">
+                                                    <li class="nav-main-item">
+                                                        <a class="nav-main-link {{ (request()->is('universe/myths-and-legends/'.$universe->id)) ? 'active' : '' }}" href="{{route('myths_and_legends.show',$universe->id)}}">
+                                                            <span class="nav-main-link-name">{{$universe->title ?? ''}}</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            @endforeach
+                                        @endif
                                     </li>
                                 </ul>
                                 <ul class="nav-main-submenu">
                                     <li class="nav-main-item {{ (request()->is('universe/civilization*')) ? 'open' : '' }}">
-                                      <a class="nav-main-link nav-main-link-submenu {{ (request()->is('universe/civilization*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('create_civilization')}}">
+                                      <a class="nav-main-link nav-main-link-submenu {{ (request()->is('universe/civilization*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('civilization.index')}}">
                                         <i class="nav-main-link-icon fa fa-building"></i>
                                         <span class="nav-main-link-name">Civilization</span>
                                       </a>
-                                      <ul class="nav-main-submenu">
-                                        <li class="nav-main-item">
-                                          <a class="nav-main-link {{ (request()->is('universe/civilization/view*')) ? 'active' : '' }}" href="{{route('view_civilization')}}">
-                                            <span class="nav-main-link-name">Civilization-1</span>
-                                          </a>
-                                        </li>
-                                      </ul>
+                                      @if(isset($c_universes))
+                                            @foreach ( $c_universes as $universe)
+                                                <ul class="nav-main-submenu">
+                                                    <li class="nav-main-item">
+                                                        <a class="nav-main-link {{ (request()->is('universe/civilization/'.$universe->id)) ? 'active' : '' }}" href="{{route('civilization.show',$universe->id)}}">
+                                                            <span class="nav-main-link-name">{{$universe->name ?? ''}}</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            @endforeach
+                                        @endif
                                     </li>
                                 </ul>
                                 <ul class="nav-main-submenu">
                                     <li class="nav-main-item {{ (request()->is('universe/bestiary*')) ? 'open' : '' }}">
-                                      <a class="nav-main-link nav-main-link-submenu {{ (request()->is('universe/bestiary*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('create_bestiary')}}">
+                                      <a class="nav-main-link nav-main-link-submenu {{ (request()->is('universe/bestiary*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('bestiary.index')}}">
                                         <i class="nav-main-link-icon fa fa-dizzy"></i>
                                         <span class="nav-main-link-name">Bestiary</span>
                                       </a>
-                                      <ul class="nav-main-submenu">
-                                        <li class="nav-main-item">
-                                          <a class="nav-main-link {{ (request()->is('universe/bestiary/view*')) ? 'active' : '' }}" href="{{route('view_bestiary')}}">
-                                            <span class="nav-main-link-name">Bestiary-1</span>
-                                          </a>
-                                        </li>
-                                      </ul>
+                                      @if(isset($b_universes))
+                                            @foreach ( $b_universes as $universe)
+                                                <ul class="nav-main-submenu">
+                                                    <li class="nav-main-item">
+                                                        <a class="nav-main-link {{ (request()->is('universe/bestiary/'.$universe->id)) ? 'active' : '' }}" href="{{route('bestiary.show',$universe->id)}}">
+                                                            <span class="nav-main-link-name">{{$universe->name ?? ''}}</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            @endforeach
+                                        @endif
                                     </li>
                                 </ul>
                                 <ul class="nav-main-submenu">
                                     <li class="nav-main-item {{ (request()->is('universe/magic*')) ? 'open' : '' }}">
-                                      <a class="nav-main-link nav-main-link-submenu {{ (request()->is('universe/magic*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('create_magic')}}">
+                                      <a class="nav-main-link nav-main-link-submenu {{ (request()->is('universe/magic*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('magic.index')}}">
                                         <i class="nav-main-link-icon fa fa-bullseye"></i>
                                         <span class="nav-main-link-name">Magic</span>
                                       </a>
-                                      <ul class="nav-main-submenu">
-                                        <li class="nav-main-item">
-                                          <a class="nav-main-link {{ (request()->is('universe/magic/view*')) ? 'active' : '' }}" href="{{route('view_magic')}}">
-                                            <span class="nav-main-link-name">Magic-1</span>
-                                          </a>
-                                        </li>
-                                      </ul>
+                                      @if(isset($m_universes))
+                                            @foreach ( $m_universes as $universe)
+                                                <ul class="nav-main-submenu">
+                                                    <li class="nav-main-item">
+                                                        <a class="nav-main-link {{ (request()->is('universe/magic/'.$universe->id)) ? 'active' : '' }}" href="{{route('magic.show',$universe->id)}}">
+                                                            <span class="nav-main-link-name">{{$universe->name ?? ''}}</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            @endforeach
+                                        @endif
                                     </li>
                                 </ul>
                                 <ul class="nav-main-submenu">
                                     <li class="nav-main-item {{ (request()->is('universe/technology*')) ? 'open' : '' }}">
-                                      <a class="nav-main-link nav-main-link-submenu {{ (request()->is('universe/technology*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('create_technology')}}">
+                                      <a class="nav-main-link nav-main-link-submenu {{ (request()->is('universe/technology*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('technology.index')}}">
                                         <i class="nav-main-link-icon fa fa-assistive-listening-systems"></i>
                                         <span class="nav-main-link-name">Technology</span>
                                       </a>
-                                      <ul class="nav-main-submenu">
-                                        <li class="nav-main-item">
-                                          <a class="nav-main-link {{ (request()->is('universe/technology/view*')) ? 'active' : '' }}" href="{{route('view_technology')}}">
-                                            <span class="nav-main-link-name">Technology-1</span>
-                                          </a>
-                                        </li>
-                                      </ul>
+                                      @if(isset($t_universes))
+                                            @foreach ( $t_universes as $universe)
+                                                <ul class="nav-main-submenu">
+                                                    <li class="nav-main-item">
+                                                        <a class="nav-main-link {{ (request()->is('universe/technology/'.$universe->id)) ? 'active' : '' }}" href="{{route('technology.show',$universe->id)}}">
+                                                            <span class="nav-main-link-name">{{$universe->name ?? ''}}</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            @endforeach
+                                        @endif
                                     </li>
                                 </ul>
                                 <ul class="nav-main-submenu">
                                     <li class="nav-main-item {{ (request()->is('universe/other*')) ? 'open' : '' }}">
-                                      <a class="nav-main-link nav-main-link-submenu {{ (request()->is('universe/other*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('create_other')}}">
+                                      <a class="nav-main-link nav-main-link-submenu {{ (request()->is('universe/other*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('other.index')}}">
                                         <i class="nav-main-link-icon fa fa-plus"></i>
                                         <span class="nav-main-link-name">Other</span>
                                       </a>
-                                      <ul class="nav-main-submenu">
-                                        <li class="nav-main-item">
-                                          <a class="nav-main-link {{ (request()->is('universe/other/view*')) ? 'active' : '' }}" href="{{route('view_other')}}">
-                                            <span class="nav-main-link-name">Other-1</span>
-                                          </a>
-                                        </li>
-                                      </ul>
+                                      @if(isset($o_universes))
+                                            @foreach ( $o_universes as $universe)
+                                                <ul class="nav-main-submenu">
+                                                    <li class="nav-main-item">
+                                                        <a class="nav-main-link {{ (request()->is('universe/other/'.$universe->id)) ? 'active' : '' }}" href="{{route('other.show',$universe->id)}}">
+                                                            <span class="nav-main-link-name">{{$universe->title ?? ''}}</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            @endforeach
+                                        @endif
                                     </li>
                                 </ul>
                             </li>
@@ -274,13 +299,6 @@
                                     <i class="nav-main-link-icon si si-pencil"></i>
                                     <span class="nav-main-link-name">Notes</span>
                                 </a>
-                                {{-- <ul class="nav-main-submenu">
-                                    <li class="nav-main-item">
-                                        <a class="nav-main-link {{ (request()->is('notes/view*')) ? 'active' : '' }}" href="{{route('view_notes')}}">
-                                            <span class="nav-main-link-name">Note-1</span>
-                                        </a>
-                                    </li>
-                                </ul> --}}
                                 
                                 @if(isset($notes))
                                     @foreach ( $notes as $note)

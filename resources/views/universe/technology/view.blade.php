@@ -22,8 +22,9 @@
         </div>
       @endif
      
-      <form id="str_chapter_form" class="js-validation" action="{{route('bookinfo.index')}}" method="POST">
+      <form id="str_chapter_form" class="js-validation" action="{{route('technology.update',$t_universe->id)}}" method="POST">
         @csrf
+        @method("PUT")
         <div class="row">
           <div class="col-md-12">
             <div class="block block-rounded">
@@ -92,7 +93,7 @@
                     </div>
                     <div class="row items-push">
                       <div class="col-xl-12 d-flex justify-content-between">
-                        <button type="button" class="btn btn-warning btn_add_scene">Delete</button>
+                        <button type="button" class="btn btn-warning btn_add_scene" onclick="document.getElementById('deleteForm').submit();">Delete</button>
                         <button type="submit" class="btn btn-primary">Save</button>
                       </div>
                     </div>
@@ -103,6 +104,10 @@
           </div>
         </div>
       </form>
+        <form id="deleteForm" action="{{route('technology.destroy',$t_universe->id)}}" method="post">
+          @csrf
+          @method('delete')
+        </form>
     </div>
 @endsection
 

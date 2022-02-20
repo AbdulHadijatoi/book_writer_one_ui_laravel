@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Universe\Technology;
 
 use App\Http\Controllers\Controller;
+use App\Models\Book;
+use App\Models\Universe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TechnologyController extends Controller
 {
@@ -14,7 +17,17 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        // return "testing";
+        $user_id = Auth::id();
+        $book = Book::where('user_id',$user_id)->first();
+        if($book != null){
+            $universe = Universe::
+            where([
+                ['user_id', '=', $user_id],
+                ['book_id', '=', $book->id],
+                ['universe_type_id', '=', 5],
+            ])->get();
+            return view('/universe/technology/index',['t_universes'=>$universe]);
+        }
         return view('/universe/technology/index');
     }
 
@@ -36,7 +49,23 @@ class TechnologyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->request->add(['user_id' => Auth::id()]);
+        $book = Book::where('user_id',Auth::id())->first();
+        
+        if($book != null){
+            $request->request->add(['book_id' => $book->id]);
+            $request->request->add(['universe_type_id' => 5]);
+            Universe::updateOrCreate(
+                ['user_id' =>  $request->user_id,
+                'book_id' =>  $request->book_id,
+                'name' => $request->name,
+                'description' => $request->description],
+                $request->input()
+            );
+            return back()->withSuccess('Successfully added!');
+        }
+        return back()->with('failed','Please add book first and then create universe!');
     }
 
     /**
@@ -47,7 +76,28 @@ class TechnologyController extends Controller
      */
     public function show($id)
     {
-        //
+        $user_id = Auth::id();
+        $book = Book::where('user_id',$user_id)->first();
+        if($book != null){
+            $universe = Universe::
+            where([
+                ['user_id', '=', $user_id],
+                ['book_id', '=', $book->id],
+                ['id', '=', $id]
+            ])->first();
+            
+            if($universe == null){
+                return back()->with('failed',"You don't have access to that universe.");
+            }
+            $universe = Universe::
+            where([
+                ['user_id', '=', $user_id],
+                ['book_id', '=', $book->id]
+            ])->get();
+            
+            return view('/universe/technology/view',['t_universe'=>$universe, 't_universes'=>$universe]);
+        }
+        return back()->with('failed',"You don't have access to that universe.");
     }
 
     /**
@@ -70,7 +120,22 @@ class TechnologyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $book = Book::where('user_id',Auth::id())->first();
+        if($book == null){
+            return back()->with('failed','Access denied');
+        }
+
+        $request->request->add(['user_id' => Auth::id()]);
+        $request->request->add(['book_id' => $book->id]);
+        
+        Universe::updateOrCreate(
+            ['user_id' =>  $request->user_id,
+             'book_id' =>  $request->book_id,
+             'id' =>  $id],
+            $request->input()
+        );
+
+        return back()->withSuccess('Successfully Updated!');
     }
 
     /**
@@ -81,10 +146,7 @@ class TechnologyController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
-
-    public function get_technology(){
-        return view('universe.technology.view');
+        Universe::where('id','=',$id)->delete();
+        return view('universe.technology.index')->with('success','successfully deleted!');
     }
 }

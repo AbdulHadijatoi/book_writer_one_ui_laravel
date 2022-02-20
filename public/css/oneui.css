@@ -6044,6 +6044,10 @@ textarea.form-control-lg {
   display: none;
 }
 
+.display_none{
+  display: none;
+}
+
 .popover-body {
   padding: 0.625rem 0.625rem;
   color: #334155;

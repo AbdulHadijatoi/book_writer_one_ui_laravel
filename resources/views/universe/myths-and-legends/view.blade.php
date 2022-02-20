@@ -21,8 +21,9 @@
         </div>
       @endif
      
-    <form class="js-validation" action="{{route('bookinfo.index')}}" method="POST">
+    <form class="js-validation" action="{{route('myths_and_legends.update',$ml_universe->id)}}" method="POST">
       @csrf
+      @method("PUT")
         <div class="block block-rounded">
           <div class="block-header block-header-default">
             <h3 class="block-title">Myths And Legends1</h3>
@@ -50,14 +51,17 @@
 
             <div class="row items-push">
               <div class="col-xl-12 d-flex justify-content-between">
-                <button type="button" class="btn btn-warning">Delete</button>
+                <button type="button" class="btn btn-warning btn_add_scene" onclick="document.getElementById('deleteForm').submit();">Delete</button>
                 <button type="submit" class="btn btn-primary">Save</button>
               </div>
             </div>
-
             <br/>
           </div>
         </div>
+      </form>
+      <form id="deleteForm" action="{{route('myths_and_legends.destroy',$ml_universe->id)}}" method="post">
+        @csrf
+        @method('delete')
       </form>
     </div>
   </div>
