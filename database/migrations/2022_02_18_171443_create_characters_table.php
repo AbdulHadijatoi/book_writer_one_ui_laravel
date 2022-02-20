@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('avatar')->nullable();
             $table->string('f_name')->nullable();
             $table->string('l_name')->nullable();
             $table->string('gender')->nullable();

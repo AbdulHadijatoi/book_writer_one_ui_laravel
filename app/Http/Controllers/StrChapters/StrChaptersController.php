@@ -95,7 +95,11 @@ class StrChaptersController extends Controller
      */
     public function show($id)
     {
-        //
+        $user_id = Auth::id();
+        $chapters = StrChapter::where('user_id',$user_id)->get();
+        $currentChapter = StrChapter::where('user_id',$user_id)->where('chapter_number',$id)->first();
+        $scenes = Scene::where('chapter_id',$currentChapter->id)->get();
+        return view('str_chapters.view',['chapters' => $chapters, 'currentChapter' => $currentChapter, 'scenes' => $scenes]);
     }
 
     /**
@@ -117,36 +121,6 @@ class StrChaptersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    public function get_chapter($chapter_number){
-        $user_id = Auth::id();
-        $chapters = StrChapter::where('user_id',$user_id)->get();
-        $currentChapter = StrChapter::where('user_id',$user_id)->where('chapter_number',$chapter_number)->first();
-        $scenes = Scene::where('chapter_id',$currentChapter->id)->get();
-        return view('str_chapters.view',['chapters' => $chapters, 'currentChapter' => $currentChapter, 'scenes' => $scenes]);
-    }
-
-     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function update_chapter(Request $request)
     {
         $book_id = Book::where('user_id',Auth::id())->first()->id;
         if($book_id != null){
@@ -191,5 +165,32 @@ class StrChaptersController extends Controller
             ]);
         }
         return back()->withSuccess('Successfully Updated!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        StrChapter::where('id','=',$id)->delete();
+        return view('str_chapters.index')->with('success','successfully deleted!');
+    }
+
+    public function get_chapter($chapter_number){
+        
+    }
+
+     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update_chapter(Request $request)
+    {
+        
     }
 }

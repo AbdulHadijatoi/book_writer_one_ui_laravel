@@ -32,7 +32,7 @@
     <!-- Page Content -->
     <div class="content">
 
-@if(session()->has('success'))
+      @if(session()->has('success'))
         <div class="alert alert-success alert-dismissible" role="alert">
           <p class="mb-0">
             {{ session()->get('success') }}

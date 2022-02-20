@@ -4,8 +4,7 @@
 @section('content')
 
     <div class="content">
-
-@if(session()->has('success'))
+      @if(session()->has('success'))
         <div class="alert alert-success alert-dismissible" role="alert">
           <p class="mb-0">
             {{ session()->get('success') }}
@@ -21,8 +20,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       @endif
-     
-        <form class="js-validation" action="{{route('bookinfo.index')}}" method="POST">
+      
+        <form class="js-validation" action="{{route('notes.store')}}" method="POST">
           @csrf
             <div class="block block-rounded">
               <div class="block-header block-header-default">
@@ -33,7 +32,7 @@
                 <div class="row items-push">
                   <div class="col-xl-12 m-auto">
                     <div class="form-floating mb-4">
-                      <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+                      <input type="text" class="form-control" id="title" name="title" placeholder="Title" required>
                       <label for="title">Title</label>
                       @if ($errors->has('title'))
                         <span class="text-danger">{{ $errors->first('title') }}</span>
@@ -50,8 +49,7 @@
                 </div>
 
                 <div class="row items-push">
-                  <div class="col-xl-12 d-flex justify-content-between">
-                    <button type="button" class="btn btn-warning">Delete</button>
+                  <div class="col-xl-12 d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary">Save</button>
                   </div>
                 </div>

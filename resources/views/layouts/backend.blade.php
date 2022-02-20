@@ -96,7 +96,7 @@
                                 </a>
                             </li>
                             <li class="nav-main-item {{ (request()->is('str_chapters*')) ? 'open' : '' }}">
-                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('str_chapters*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('create_str_chapter')}}">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('str_chapters*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('str_chapters.index')}}">
                                     <i class="nav-main-link-icon fa fa-laptop-medical"></i>
                                     <span class="nav-main-link-name">Str. Chapters</span>
                                 </a>
@@ -104,8 +104,7 @@
                                     @foreach ( $chapters as $chapter)
                                         <ul class="nav-main-submenu">
                                             <li class="nav-main-item">
-                                                {{-- {{ (request()->is('str_chapters/view'.$chapter->chapter_number)) ? 'active' : '' }} --}}
-                                                <a class="nav-main-link" href="{{route('view_str_chapter',$chapter->chapter_number)}}">
+                                                <a class="nav-main-link {{ (request()->is('str_chapters/'.$chapter->chapter_number)) ? 'active' : '' }}" href="{{route('str_chapters.show',$chapter->chapter_number)}}">
                                                     <span class="nav-main-link-name">Chapter-{{$chapter->chapter_number ?? '0'}}</span>
                                                 </a>
                                             </li>
@@ -114,45 +113,58 @@
                                 @endif
                             </li>
                             <li class="nav-main-item {{ (request()->is('chapters*')) ? 'open' : '' }}">
-                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('chapters*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('create_chapter')}}">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('chapters*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('chapters.index')}}">
                                     <i class="nav-main-link-icon fa fa-receipt"></i>
                                     <span class="nav-main-link-name">Chapters</span>
                                 </a>
 
-                                <ul class="nav-main-submenu">
-                                    <li class="nav-main-item">
-                                        <a class="nav-main-link {{ (request()->is('chapters/view*')) ? 'active' : '' }}" href="{{route('view_chapter')}}">
-                                            <span class="nav-main-link-name">Chapter-1</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                                @if(isset($chapters))
+                                    @foreach ( $chapters as $chapter)
+                                        <ul class="nav-main-submenu">
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link {{ (request()->is('chapters/'.$chapter->id)) ? 'active' : '' }}" href="{{route('chapters.show',$chapter->id)}}">
+                                                    <span class="nav-main-link-name">{{$chapter->chapter_title ?? ''}}</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    @endforeach
+                                @endif
                             </li>
                             <li class="nav-main-item {{ (request()->is('characters*')) ? 'open' : '' }}">
-                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('characters*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('create_character')}}">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('characters*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('characters.index')}}">
                                     <i class="nav-main-link-icon fa fa-skating"></i>
                                     <span class="nav-main-link-name">Characters</span>
                                 </a>
 
-                                <ul class="nav-main-submenu">
-                                    <li class="nav-main-item">
-                                        <a class="nav-main-link {{ (request()->is('characters/view*')) ? 'active' : '' }}" href="{{route('view_character')}}">
-                                            <span class="nav-main-link-name">Character-1</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                                @if(isset($characters))
+                                    @foreach ( $characters as $character)
+                                        <ul class="nav-main-submenu">
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link {{ (request()->is('characters/'.$character->id)) ? 'active' : '' }}" href="{{route('characters.show',$character->id)}}">
+                                                    <span class="nav-main-link-name">{{$character->f_name ?? ''}}</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    @endforeach
+                                @endif
                             </li>
                             <li class="nav-main-item {{ (request()->is('geography*')) ? 'open' : '' }}">
-                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('geography*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('create_geography')}}">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('geography*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('geography.index')}}">
                                     <i class="nav-main-link-icon fa fa-spinner"></i>
                                     <span class="nav-main-link-name">Geography</span>
                                 </a>
-                                <ul class="nav-main-submenu">
-                                    <li class="nav-main-item">
-                                        <a class="nav-main-link {{ (request()->is('geography/view*')) ? 'active' : '' }}" href="{{route('view_geography')}}">
-                                            <span class="nav-main-link-name">Geography-1</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                                
+                                @if(isset($geographies))
+                                    @foreach ( $geographies as $geography)
+                                        <ul class="nav-main-submenu">
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link {{ (request()->is('geography/'.$geography->id)) ? 'active' : '' }}" href="{{route('geography.show',$geography->id)}}">
+                                                    <span class="nav-main-link-name">{{$geography->place_name ?? ''}}</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    @endforeach
+                                @endif
                             </li>
                             <li class="nav-main-item {{ (request()->is('universe*')) ? 'open' : '' }}">
                                 <a class="nav-main-link nav-main-link-submenu {{ (request()->is('universe*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route(('universeList'))}}">
@@ -258,17 +270,29 @@
                                 </a>
                             </li>
                             <li class="nav-main-item {{ (request()->is('notes*')) ? 'open' : '' }}">
-                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('notes*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('create_notes')}}">
+                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('notes*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('notes.index')}}">
                                     <i class="nav-main-link-icon si si-pencil"></i>
                                     <span class="nav-main-link-name">Notes</span>
                                 </a>
-                                <ul class="nav-main-submenu">
+                                {{-- <ul class="nav-main-submenu">
                                     <li class="nav-main-item">
                                         <a class="nav-main-link {{ (request()->is('notes/view*')) ? 'active' : '' }}" href="{{route('view_notes')}}">
                                             <span class="nav-main-link-name">Note-1</span>
                                         </a>
                                     </li>
-                                </ul>
+                                </ul> --}}
+                                
+                                @if(isset($notes))
+                                    @foreach ( $notes as $note)
+                                        <ul class="nav-main-submenu">
+                                            <li class="nav-main-item">
+                                                <a class="nav-main-link {{ (request()->is('notes/'.$note->id)) ? 'active' : '' }}" href="{{route('notes.show',$note->id)}}">
+                                                    <span class="nav-main-link-name">{{$note->title ?? ''}}</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    @endforeach
+                                @endif
                             </li>
                             <li class="nav-main-item {{ (request()->is('sources*')) ? 'open' : '' }}">
                                 <a class="nav-main-link {{ (request()->is('sources*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('sources.index')}}">

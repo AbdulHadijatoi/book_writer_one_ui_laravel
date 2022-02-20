@@ -23,7 +23,7 @@
       @endif
      
        
-      <form id="str_chapter_form" class="js-validation" action="{{route('save_str_chapter')}}" method="POST">
+      <form id="str_chapter_form" class="js-validation" action="{{route('str_chapters.store')}}" method="POST">
         @csrf
         <div class="row">
           <div class="col-md-12">

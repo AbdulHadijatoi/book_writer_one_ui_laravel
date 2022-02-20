@@ -44,7 +44,6 @@ class BookInfoController extends Controller
             ['user_id' =>  $request->user_id],
             $request->input()
         );
-        // return $request->input();
         return back()->withSuccess('Successfully added!');
     }
 

@@ -22,7 +22,7 @@
         </div>
       @endif
      
-        <form class="js-validation" action="{{route('bookinfo.index')}}" method="POST">
+        <form class="js-validation" action="{{route('sources.store')}}" method="POST">
           @csrf
             <div class="block block-rounded">
               <div class="block-header block-header-default">
@@ -33,7 +33,7 @@
                 <div class="row items-push">
                   <div class="col-xl-12 m-auto">
                     <div class="form-floating mb-4">
-                      <textarea class="form-control" id="sources" name="sources" style="height: 500px" placeholder="Sources"></textarea>
+                      <textarea class="form-control" id="sources" name="sources" style="height: 500px" placeholder="Sources" required>{{$source->sources ?? ""}}</textarea>
                       <label for="sources">Sources</label>
                       @if ($errors->has('sources'))
                         <span class="text-danger">{{ $errors->first('sources') }}</span>

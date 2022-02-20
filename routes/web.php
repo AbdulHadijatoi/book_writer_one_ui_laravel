@@ -39,20 +39,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('dashboard', DashboardController::class);
     Route::resource('bookinfo', BookInfoController::class);
     Route::resource('cards', CardsController::class);
-    Route::get('chapters', [ChaptersController::class, 'index'])->name('create_chapter');
-    Route::get('chapters/view', [ChaptersController::class, 'get_chapter'])->name('view_chapter');
-    Route::get('characters', [CharactersController::class, 'index'])->name('create_character');
-    Route::get('characters/view', [CharactersController::class, 'get_character'])->name('view_character');
-    Route::get('geography', [GeographyController::class, 'index'])->name('create_geography');
-    Route::get('geography/view', [GeographyController::class, 'get_geography'])->name('view_geography');
+    Route::resource('chapters', ChaptersController::class);
+    Route::resource('characters', CharactersController::class);
+    Route::resource('geography', GeographyController::class);
     Route::resource('illustrations', IllustrationsController::class);
-    Route::get('notes', [NotesController::class, 'index'])->name('create_notes');
-    Route::get('notes/view', [NotesController::class, 'get_notes'])->name('view_notes');
+    Route::resource('notes', NotesController::class);
     Route::resource('sources', SourcesController::class);
-    Route::get('str_chapters', [StrChaptersController::class, 'index'])->name('create_str_chapter');
-    Route::post('str_chapters', [StrChaptersController::class, 'store'])->name('save_str_chapter');
-    Route::get('str_chapters/view{number}', [StrChaptersController::class, 'get_chapter'])->name('view_str_chapter');
-    Route::POST('str_chapters/view', [StrChaptersController::class, 'update_chapter'])->name('update_str_chapter');
+    Route::resource('str_chapters', StrChaptersController::class);
     Route::resource('structure', StructureController::class);
     Route::view('/universe', 'universe/index')->name('universeList');
     Route::group(['prefix' => 'universe'], function () {

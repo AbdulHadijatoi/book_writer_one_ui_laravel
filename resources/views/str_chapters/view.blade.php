@@ -23,8 +23,9 @@
       @endif
      
        
-      <form id="str_chapter_form" class="js-validation" action="{{route('update_str_chapter')}}" method="POST">
+      <form id="str_chapter_form" class="js-validation" @if(isset($currentChapter)) action="{{route('str_chapters.update',$currentChapter->chapter_number ?? '')}}" @endif method="POST">
         @csrf
+        @method('PUT')
         <div class="row">
           <div class="col-md-12">
             <div class="block block-rounded">
@@ -206,7 +207,7 @@
                               @php
                                 $i++;
                               @endphp
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                           </div>
                         </div>
                       </div>

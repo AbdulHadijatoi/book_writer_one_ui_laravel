@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Geography;
 
 use App\Http\Controllers\Controller;
+use App\Models\Book;
+use App\Models\Geography;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GeographyController extends Controller
 {
@@ -14,6 +17,16 @@ class GeographyController extends Controller
      */
     public function index()
     {
+        $user_id = Auth::id();
+        $book = Book::where('user_id',$user_id)->first();
+        if($book != null){
+            $geographies = Geography::
+            where([
+                ['user_id', '=', $user_id],
+                ['book_id', '=', $book->id],
+            ])->get();
+            return view('/geography/index',['geographies'=>$geographies]);
+        }
         return view('/geography/index');
     }
 
@@ -35,7 +48,19 @@ class GeographyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->request->add(['user_id' => Auth::id()]);
+        $book = Book::where('user_id',Auth::id())->first();
+
+        if($book != null){
+            $request->request->add(['book_id' => $book->id]);
+            Geography::updateOrCreate(
+                ['user_id' =>  $request->user_id, 'book_id' =>  $request->book_id, 'place_name' =>  $request->place_name],
+                $request->input()
+            );
+            return back()->withSuccess('Successfully added!');
+        }
+
+        return back()->with('failed','Please add book first and then create geography!');
     }
 
     /**
@@ -46,7 +71,28 @@ class GeographyController extends Controller
      */
     public function show($id)
     {
-        //
+        $user_id = Auth::id();
+        $book = Book::where('user_id',$user_id)->first();
+        if($book != null){
+            $geography = Geography::
+            where([
+                ['user_id', '=', $user_id],
+                ['book_id', '=', $book->id],
+                ['id', '=', $id]
+            ])->first();
+            
+            if($geography == null){
+                return back()->with('failed',"You don't have access to that geography.");
+            }
+            $geographies = Geography::
+            where([
+                ['user_id', '=', $user_id],
+                ['book_id', '=', $book->id]
+            ])->get();
+            
+            return view('/geography/view',['geography'=>$geography, 'geographies'=>$geographies]);
+        }
+        return back()->with('failed',"You don't have access to this geography.");
     }
 
     /**
@@ -69,7 +115,22 @@ class GeographyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $book = Book::where('user_id',Auth::id())->first();
+        if($book == null){
+            return back()->with('failed','Access denied');
+        }
+
+        $request->request->add(['user_id' => Auth::id()]);
+        $request->request->add(['book_id' => $book->id]);
+        
+        Geography::updateOrCreate(
+            ['user_id' =>  $request->user_id,
+             'book_id' =>  $request->book_id,
+             'id' =>  $id],
+            $request->input()
+        );
+
+        return back()->withSuccess('Successfully Updated!');
     }
 
     /**
@@ -80,10 +141,7 @@ class GeographyController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
-
-    public function get_geography(){
-        return view('geography.view');
+        Geography::where('id','=',$id)->delete();
+        return view('geography.index')->with('success','successfully deleted!');
     }
 }

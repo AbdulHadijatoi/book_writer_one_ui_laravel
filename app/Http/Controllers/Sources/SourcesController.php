@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Sources;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Structure;
+use App\Models\Book;
+use App\Models\Source;
+use Illuminate\Support\Facades\Auth;
 
 class SourcesController extends Controller
 {
@@ -14,7 +18,9 @@ class SourcesController extends Controller
      */
     public function index()
     {
-        return view('/sources/index');
+        $user_id = Auth::id();
+        $source = Source::where('user_id',$user_id)->first();
+        return view('/sources/index',['source'=>$source]);
     }
 
     /**
@@ -35,7 +41,16 @@ class SourcesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $book_id = Book::where('user_id',Auth::id())->first()->id;
+        if($book_id != null){
+            $request->request->add(['book_id' => $book_id]);
+        }
+        $request->request->add(['user_id' => Auth::id()]);
+        Source::updateOrCreate(
+            ['user_id' =>  $request->user_id],
+            $request->input()
+        );
+        return back()->withSuccess('Successfully added!');
     }
 
     /**

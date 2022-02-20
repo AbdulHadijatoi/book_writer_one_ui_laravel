@@ -4,28 +4,45 @@
 @section('content')
 
     <div class="content content-boxed">
+      <div class="content">
+        @if(session()->has('success'))
+          <div class="alert alert-success alert-dismissible" role="alert">
+            <p class="mb-0">
+              {{ session()->get('success') }}
+            </p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        @endif
+        @if(session()->has('failed'))
+          <div class="alert alert-warning alert-dismissible" role="alert">
+            <p class="mb-0">
+              {{ session()->get('failed') }}
+            </p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        @endif
       <div class="block block-rounded">
         <div class="block-header block-header-default">
           <h3 class="block-title">Characters</h3>
         </div>
         <div class="block-content">
-          <form action="be_pages_projects_edit.html" method="POST" enctype="multipart/form-data" onsubmit="return false;">
+          <form action="{{route('characters.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row push">
               <div class="col-lg-12 d-flex flex-column flex-lg-row justify-content-between ">
                 <div class="col-lg-3 d-flex flex-column align-items-lg-start align-items-center justify-content-center justify-content-lg-between flex-lg-row">
                   <div class="mb-4 mb-lg-0">
-                    <img width="200" style="cursor: pointer" src="{{asset('media/avatars/avatar.png')}}" alt="" onclick="document.getElementById('character_avatar').click();">
+                    <img width="200" style="cursor: pointer" src="{{asset('media/avatars/avatar.png')}}" alt="" onclick="document.getElementById('avatar').click();">
                   </div>
 
                   <div class="position-absolute invisible">
                     <label for="one-profile-edit-avatar" class="form-label">Choose a new avatar</label>
-                    <input class="form-control" type="file" name="avatar" id="character_avatar">
+                    <input class="form-control" type="file" name="avatar" id="avatar">
                   </div>
                 </div>
                 <div class="col-lg-9">
                   <div class="form-floating mb-4">
-                    <input type="text" class="form-control" id="f_name" name="f_name" placeholder="Firstname">
+                    <input type="text" class="form-control" id="f_name" name="f_name" placeholder="Firstname" required>
                     <label for="f_name">Firstname</label>
                     @if ($errors->has('f_name'))
                       <span class="text-danger">{{ $errors->first('f_name') }}</span>
@@ -149,8 +166,7 @@
                   </div>
                 </div>
                 <div class="row items-push">
-                  <div class="col-xl-12 d-flex justify-content-between">
-                    <button type="button" class="btn btn-warning btn_add_scene">Delete</button>
+                  <div class="col-xl-12 d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary">Save</button>
                   </div>
                 </div>

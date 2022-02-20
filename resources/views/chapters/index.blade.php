@@ -5,7 +5,7 @@
     
     <div class="content">
 
-@if(session()->has('success'))
+      @if(session()->has('success'))
         <div class="alert alert-success alert-dismissible" role="alert">
           <p class="mb-0">
             {{ session()->get('success') }}
@@ -22,7 +22,7 @@
         </div>
       @endif
      
-        <form class="js-validation" action="{{route('bookinfo.index')}}" method="POST">
+        <form class="js-validation" action="{{route('chapters.index')}}" method="POST">
           @csrf
             <div class="block block-rounded">
               <div class="block-header block-header-default">
@@ -33,7 +33,7 @@
                 <div class="row items-push">
                   <div class="col-xl-12 m-auto">
                     <div class="form-floating mb-4">
-                      <input type="text" class="form-control" id="chapter_title" name="chapter_title" placeholder="Title">
+                      <input type="text" class="form-control" id="chapter_title" name="chapter_title" placeholder="Title" required>
                       <label for="chapter_title">Title</label>
                       @if ($errors->has('chapter_title'))
                         <span class="text-danger">{{ $errors->first('chapter_title') }}</span>
@@ -87,8 +87,7 @@
 
                 <!-- Submit -->
                 <div class="row items-push">
-                  <div class="col-xl-12 d-flex justify-content-between">
-                    <button type="button" class="btn btn-warning btn_add_scene">Delete</button>
+                  <div class="col-xl-12 d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary">Save</button>
                   </div>
                 </div>

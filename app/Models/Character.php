@@ -15,11 +15,12 @@ class Character extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'avatar',
         'f_name', 
         'l_name', 
         'gender', 
         'age', 
-        'physical_description', 
+        'physical_description',
         'summery', 
         'skills', 
         'history', 
