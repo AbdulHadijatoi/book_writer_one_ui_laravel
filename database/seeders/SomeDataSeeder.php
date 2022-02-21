@@ -20,9 +20,9 @@ class SomeDataSeeder extends Seeder
      */
     public function run()
     {
+
         UniverseType::truncate();
         ChapterType::truncate();
-        User::truncate();
 
 
         $universe_types = [
@@ -39,18 +39,9 @@ class SomeDataSeeder extends Seeder
             ['chapter_type' => 'Prologue'],
             ['chapter_type' => 'Epilogue']
         ];
-        $users = [
-            [
-            'email' => 'test@gmail.com',
-            'password' => Hash::make('11111111'),
-            ]
-        ];
-
-        
 
         UniverseType::insert($universe_types);
         ChapterType::insert($chapter_types);
-        User::insert($users);
 
     }
 }
