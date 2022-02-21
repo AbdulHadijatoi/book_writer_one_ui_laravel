@@ -55,7 +55,7 @@ class BestiaryController extends Controller
         
         if($book != null){
             $request->request->add(['book_id' => $book->id]);
-            $request->request->add(['universe_type_id' => 2]);
+            $request->request->add(['universe_type_id' => 1]);
             Universe::updateOrCreate(
                 ['user_id' =>  $request->user_id,
                 'book_id' =>  $request->book_id,

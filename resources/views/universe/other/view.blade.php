@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','Other1')
+@section('title',$o_universe->title ?? '')
 @section('content')
   <div class="content">
 
@@ -26,21 +26,21 @@
       @method('PUT')
         <div class="block block-rounded">
           <div class="block-header block-header-default">
-            <h3 class="block-title">Other1</h3>
+            <h3 class="block-title">{{$o_universe->title ?? ""}}</h3>
           </div>
           <br/>
           <div class="block-content block-content-full">
             <div class="row items-push">
               <div class="col-xl-12 m-auto">
                 <div class="form-floating mb-4">
-                  <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+                  <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="{{$o_universe->title ?? ""}}" required>
                   <label for="title">Title</label>
                   @if ($errors->has('title'))
                     <span class="text-danger">{{ $errors->first('title') }}</span>
                   @endif
                 </div>
                 <div class="form-floating mb-4">
-                  <textarea class="form-control" id="content" name="content" style="height: 500px" placeholder="Content"></textarea>
+                  <textarea class="form-control" id="content" name="content" style="height: 500px" placeholder="Content">{{$o_universe->content ?? ""}}</textarea>
                   <label for="content">Content</label>
                   @if ($errors->has('content'))
                     <span class="text-danger">{{ $errors->first('content') }}</span>

@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title','Magic1')
+@section('title',$m_universe->name)
 @section('content')
     <div class="content">
 
@@ -28,7 +28,7 @@
           <div class="col-md-12">
             <div class="block block-rounded">
               <div class="block-header block-header-default">
-                <h3 class="block-title">Magic1</h3>
+                <h3 class="block-title">{{$m_universe->name ?? ""}}</h3>
                 <div class="block-options">
                   <button type="button" class="btn-block-option" data-toggle="block-option" data-action="fullscreen_toggle"></button>
                   <button type="button" class="btn-block-option" data-toggle="block-option" data-action="content_toggle"></button>
@@ -42,7 +42,7 @@
                       <div class="col-xl-12 m-auto">
                         
                         <div class="form-floating mb-4">
-                          <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                          <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{$m_universe->name ?? ""}}" required>
                           <label for="name">Name</label>
                           @if ($errors->has('name'))
                             <span class="text-danger">{{ $errors->first('name') }}</span>
@@ -52,7 +52,7 @@
                         <div role="separator" class="dropdown-divider m-0 mb-4"></div>
                         
                         <div class="form-floating mb-4">
-                          <textarea class="form-control" id="description" name="description" style="height: 200px" placeholder="Description"></textarea>
+                          <textarea class="form-control" id="description" name="description" style="height: 200px" placeholder="Description">{{$m_universe->description ?? ""}}</textarea>
                           <label for="description">Description</label>
                           @if ($errors->has('description'))
                           <span class="text-danger">{{ $errors->first('description') }}</span>
@@ -62,7 +62,7 @@
                         <div role="separator" class="dropdown-divider m-0 mb-4"></div>
 
                         <div class="form-floating mb-4">
-                            <textarea class="form-control" id="rules_and_limits" name="rules_and_limits" style="height: 200px" placeholder="Rules and limits"></textarea>
+                            <textarea class="form-control" id="rules_and_limits" name="rules_and_limits" style="height: 200px" placeholder="Rules and limits">{{$m_universe->rules_and_limits ?? ""}}</textarea>
                             <label for="rules_and_limits">Rules and Limits</label>
                             @if ($errors->has('rules_and_limits'))
                               <span class="text-danger">{{ $errors->first('rules_and_limits') }}</span>
@@ -72,7 +72,7 @@
                         <div role="separator" class="dropdown-divider m-0 mb-4"></div>
 
                         <div class="form-floating mb-4">
-                            <textarea class="form-control" id="miscellaneous_information" name="miscellaneous_information" style="height: 200px" placeholder="Miscellaneous information"></textarea>
+                            <textarea class="form-control" id="miscellaneous_information" name="miscellaneous_information" style="height: 200px" placeholder="Miscellaneous information">{{$m_universe->miscellaneous_information ?? ""}}</textarea>
                             <label for="miscellaneous_information">Miscellaneous information</label>
                             @if ($errors->has('miscellaneous_information'))
                               <span class="text-danger">{{ $errors->first('miscellaneous_information') }}</span>
