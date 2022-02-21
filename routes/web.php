@@ -7,6 +7,7 @@ use App\Http\Controllers\Chapters\ChaptersController;
 use App\Http\Controllers\Characters\CharactersController;
 use App\Http\Controllers\Geography\GeographyController;
 use App\Http\Controllers\Illustrations\IllustrationsController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\Notes\NotesController;
 use App\Http\Controllers\Sources\SourcesController;
 use App\Http\Controllers\StrChapters\StrChaptersController;
@@ -47,7 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('sources', SourcesController::class);
     Route::resource('str_chapters', StrChaptersController::class);
     Route::resource('structure', StructureController::class);
-    Route::view('/universe', 'universe/index')->name('universeList');
+    Route::get('/universe/index', [MainController::class,'get_universes'])->name('universeList');
     Route::group(['prefix' => 'universe'], function () {
         Route::resource('bestiary', BestiaryController::class);
         Route::resource('civilization', CivilizationController::class);
