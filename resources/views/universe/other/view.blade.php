@@ -21,7 +21,7 @@
         </div>
       @endif
      
-    <form class="js-validation" action="{{route('other.index',$o_universe->id)}}" method="POST">
+    <form class="js-validation" action="{{route('other.update',$o_universe->id)}}" method="POST">
       @csrf
       @method('PUT')
         <div class="block block-rounded">
