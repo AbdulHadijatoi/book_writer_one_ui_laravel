@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\ChapterType;
+use App\Models\Dictionary;
 use Illuminate\Database\Seeder;
 use App\Models\Quiz;
 use App\Models\Questions;
@@ -10,7 +11,7 @@ use App\Models\UniverseType;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class TypesSeeder extends Seeder
+class SomeDataSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -22,6 +23,7 @@ class TypesSeeder extends Seeder
         UniverseType::truncate();
         ChapterType::truncate();
         User::truncate();
+
 
         $universe_types = [
             ['universe_type' => 'Bestiary'],
@@ -44,9 +46,14 @@ class TypesSeeder extends Seeder
             ]
         ];
 
+        
+
         UniverseType::insert($universe_types);
         ChapterType::insert($chapter_types);
         User::insert($users);
 
     }
 }
+
+
+
