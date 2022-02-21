@@ -19,8 +19,12 @@ class SourcesController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        $source = Source::where('user_id',$user_id)->first();
-        return view('/sources/index',['source'=>$source]);
+        $book = Book::where('user_id',$user_id)->first();
+        if($book != null){
+            $source = Source::where([['user_id', '=', $user_id],['book_id', '=', $book->id]])->first();
+            return view('/sources/index',['source'=>$source]);
+        }
+        return view('/sources/index');
     }
 
     /**

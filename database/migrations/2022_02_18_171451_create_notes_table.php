@@ -18,8 +18,10 @@ return new class extends Migration
             $table->timestamps();
             $table->string('title')->nullable();
             $table->string('note')->nullable();
-            $table->integer('book_id')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->index('book_id');
+            $table->foreignId('book_id')->constrained('books')->onUpdate('cascade')->onDelete('cascade');
+            $table->index('user_id');
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             
         });
     }

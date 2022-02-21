@@ -100,8 +100,8 @@
                                     <i class="nav-main-link-icon fa fa-laptop-medical"></i>
                                     <span class="nav-main-link-name">Str. Chapters</span>
                                 </a>
-                                @if(isset($chapters))
-                                    @foreach ( $chapters as $chapter)
+                                @if(isset($str_chapters))
+                                    @foreach ( $str_chapters as $chapter)
                                         <ul class="nav-main-submenu">
                                             <li class="nav-main-item">
                                                 <a class="nav-main-link {{ (request()->is('str_chapters/'.$chapter->chapter_number)) ? 'active' : '' }}" href="{{route('str_chapters.show',$chapter->chapter_number)}}">

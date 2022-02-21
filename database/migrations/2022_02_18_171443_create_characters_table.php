@@ -28,8 +28,10 @@ return new class extends Migration
             $table->string('evolution')->nullable();
             $table->string('motivation')->nullable();
             $table->string('additional_information')->nullable();
-            $table->integer('book_id')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->index('book_id');
+            $table->foreignId('book_id')->constrained('books')->onUpdate('cascade')->onDelete('cascade');
+            $table->index('user_id');
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

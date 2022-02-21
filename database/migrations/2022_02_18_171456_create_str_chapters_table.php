@@ -24,8 +24,10 @@ return new class extends Migration
             $table->string('chapter_characters')->nullable();
             $table->text('chapter_abstract')->nullable();
             $table->string('chapter_issues')->nullable();
-            $table->integer('book_id')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->index('book_id');
+            $table->foreignId('book_id')->constrained('books')->onUpdate('cascade')->onDelete('cascade');
+            $table->index('user_id');
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

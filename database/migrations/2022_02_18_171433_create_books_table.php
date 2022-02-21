@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('genre')->nullable();
             $table->string('themes')->nullable();
             $table->string('summery')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->index('user_id');
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

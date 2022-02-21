@@ -59,5 +59,8 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 
+Route::get('/preview', [MainController::class, 'previewBook']);
+Route::get('generate-pdf', [MainController::class, 'generatePDF'])->name('generate_pdf');
+
 
 require __DIR__.'/auth.php';

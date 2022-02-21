@@ -21,9 +21,12 @@ return new class extends Migration
             $table->string('scene_characters')->nullable();
             $table->string('scene_issues')->nullable();
             $table->string('scene_abstract')->nullable();
-            $table->integer('chapter_id')->nullable();
-            $table->integer('book_id')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->index('str_chapter_id');
+            $table->foreignId('str_chapter_id')->constrained('str_chapters')->onUpdate('cascade')->onDelete('cascade');
+            $table->index('book_id');
+            $table->foreignId('book_id')->constrained('books')->onUpdate('cascade')->onDelete('cascade');
+            $table->index('user_id');
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

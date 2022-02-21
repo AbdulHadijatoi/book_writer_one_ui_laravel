@@ -20,9 +20,14 @@ class Scene extends Model
         'scene_characters', 
         'scene_issues', 
         'scene_abstract', 
-        'chapter_id', 
+        'str_chapter_id', 
         'book_id', 
         'user_id' 
     ];
+
+    public function str_chapter()
+    {
+        return $this->belongsTo(StrChapter::class);
+    }
 
 }

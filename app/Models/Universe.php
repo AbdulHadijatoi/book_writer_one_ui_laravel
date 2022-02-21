@@ -22,8 +22,8 @@ class Universe extends Model
         'miscellaneous_information', 
         'rules_and_limits', 
         'content', 
-        'technical_terms_jargons', 
-        'universe_type_id', 
+        'technical_terms_jargons',
+        'universe_type_id',
         'book_id', 
         'user_id' 
     ];

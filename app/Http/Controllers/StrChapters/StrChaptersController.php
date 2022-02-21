@@ -20,8 +20,8 @@ class StrChaptersController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        $chapters = StrChapter::where('user_id',$user_id)->get();
-        return view('/str_chapters/index',['chapters' => $chapters]);
+        $str_chapters = StrChapter::where('user_id',$user_id)->get();
+        return view('/str_chapters/index',['str_chapters' => $str_chapters]);
         // return view('/str_chapters/index');
     }
 
@@ -56,20 +56,20 @@ class StrChaptersController extends Controller
             $request->input()
         );
 
-        $chapter_id = StrChapter::select('id')
+        $str_chapter_id = StrChapter::select('id')
                 ->where([
                     ['user_id', '=', $request->user_id],
                     ['book_id', '=', $request->book_id],
                     ['chapter_number', '=', $request->chapter_number]
                 ])->first()->id;
         // return $request->scene_location[1];
-        $request->request->add(['chapter_id' => $chapter_id]);
+        $request->request->add(['str_chapter_id' => $str_chapter_id]);
         
         for ($i=0; $i < count($request->scene_number); $i++) { 
             Scene::updateOrCreate(
                 [
                     'scene_number' => $request->scene_number[$i],
-                    'chapter_id' => $request->chapter_id,
+                    'str_chapter_id' => $request->str_chapter_id,
                     'book_id' => $request->book_id,
                     'user_id' => $request->user_id
                 ],
@@ -79,7 +79,7 @@ class StrChaptersController extends Controller
                     'scene_characters' => $request->scene_characters[$i],
                     'scene_issues' => $request->scene_issues[$i],
                     'scene_abstract' => $request->scene_abstract[$i],
-                    'chapter_id' => $request->chapter_id,
+                    'str_chapter_id' => $request->str_chapter_id,
                     'book_id' => $request->book_id,
                     'user_id' => $request->user_id
             ]);
@@ -96,10 +96,10 @@ class StrChaptersController extends Controller
     public function show($id)
     {
         $user_id = Auth::id();
-        $chapters = StrChapter::where('user_id',$user_id)->get();
+        $str_chapters = StrChapter::where('user_id',$user_id)->get();
         $currentChapter = StrChapter::where('user_id',$user_id)->where('chapter_number',$id)->first();
-        $scenes = Scene::where('chapter_id',$currentChapter->id)->get();
-        return view('str_chapters.view',['chapters' => $chapters, 'currentChapter' => $currentChapter, 'scenes' => $scenes]);
+        $scenes = Scene::where('str_chapter_id',$currentChapter->id)->get();
+        return view('str_chapters.view',['chapters' => $str_chapters, 'currentChapter' => $currentChapter, 'scenes' => $scenes]);
     }
 
     /**
@@ -135,21 +135,21 @@ class StrChaptersController extends Controller
             $request->input()
         );
 
-        $chapter_id = StrChapter::select('id')
+        $str_chapter_id = StrChapter::select('id')
                 ->where([
                     ['user_id', '=', $request->user_id],
                     ['book_id', '=', $request->book_id],
                     ['chapter_number', '=', $request->chapter_number]
                 ])->first()->id;
         // return $request->scene_location[1];
-        $request->request->add(['chapter_id' => $chapter_id]);
-        $scenes = Scene::where('chapter_id','=',$chapter_id)->get();
+        $request->request->add(['str_chapter_id' => $str_chapter_id]);
+        $scenes = Scene::where('str_chapter_id','=',$str_chapter_id)->get();
         $scenes->each->delete();
         for ($i=0; $i < count($request->scene_number); $i++) { 
             Scene::updateOrCreate(
                 [
                     'scene_number' => $request->scene_number[$i],
-                    'chapter_id' => $request->chapter_id,
+                    'str_chapter_id' => $request->str_chapter_id,
                     'book_id' => $request->book_id,
                     'user_id' => $request->user_id
                 ],
@@ -159,7 +159,7 @@ class StrChaptersController extends Controller
                     'scene_characters' => $request->scene_characters[$i],
                     'scene_issues' => $request->scene_issues[$i],
                     'scene_abstract' => $request->scene_abstract[$i],
-                    'chapter_id' => $request->chapter_id,
+                    'str_chapter_id' => $request->str_chapter_id,
                     'book_id' => $request->book_id,
                     'user_id' => $request->user_id
             ]);
@@ -179,18 +179,4 @@ class StrChaptersController extends Controller
         return view('str_chapters.index')->with('success','successfully deleted!');
     }
 
-    public function get_chapter($chapter_number){
-        
-    }
-
-     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function update_chapter(Request $request)
-    {
-        
-    }
 }

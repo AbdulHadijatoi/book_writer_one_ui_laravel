@@ -66,11 +66,12 @@
                         <p>
                             <strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</strong>
                         </p>
+                        <a href="{{route('generate_pdf')}}" class="btn btn-primary mb-4">Generate Book PDF</a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-xl-6">
+            {{-- <div class="col-xl-6">
                 <!-- Lines Chart -->
                 <div class="block block-rounded">
                   <div class="block-header block-header-default">
@@ -110,7 +111,7 @@
                   </div>
                 </div>
                 <!-- END Radar Chart -->
-              </div>
+              </div> --}}
         </div>
     </div>
     <!-- END Page Content -->

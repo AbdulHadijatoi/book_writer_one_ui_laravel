@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Universe_Type extends Model
+class UniverseType extends Model
 {
     use HasFactory;
 

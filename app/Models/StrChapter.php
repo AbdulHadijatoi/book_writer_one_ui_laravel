@@ -26,4 +26,8 @@ class StrChapter extends Model
         'book_id', 
         'user_id', 
     ];
+
+    public function scenes(){
+        return $this->hasMany(Scene::class);
+    }
 }

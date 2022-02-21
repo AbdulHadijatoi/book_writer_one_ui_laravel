@@ -24,9 +24,12 @@ return new class extends Migration
             $table->string('rules_and_limits')->nullable();
             $table->text('content')->nullable();
             $table->string('technical_terms_jargons')->nullable();
-            $table->integer('universe_type_id')->nullable();
-            $table->integer('book_id')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->index('universe_type_id');
+            $table->foreignId('universe_type_id')->constrained('universe_types')->onUpdate('cascade')->onDelete('cascade');
+            $table->index('book_id');
+            $table->foreignId('book_id')->constrained('books')->onUpdate('cascade')->onDelete('cascade');
+            $table->index('user_id');
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
