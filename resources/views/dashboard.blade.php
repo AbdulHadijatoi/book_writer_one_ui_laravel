@@ -66,7 +66,7 @@
                         <p>
                             <strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</strong>
                         </p>
-                        <a href="{{route('generate_pdf')}}" class="btn btn-primary mb-4">Generate Book PDF</a>
+                        <a target="blank" href="{{route('generate_pdf')}}" class="btn btn-primary mb-4">Generate Book PDF</a>
                     </div>
                 </div>
             </div>
