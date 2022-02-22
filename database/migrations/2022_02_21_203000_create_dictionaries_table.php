@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('word')->nullable();
             $table->string('type')->nullable();
-            $table->string('synonym')->nullable();
+            $table->text('synonym')->nullable();
             $table->timestamps();
         });
     }
