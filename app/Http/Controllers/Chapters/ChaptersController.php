@@ -24,7 +24,7 @@ class ChaptersController extends Controller
             where([
                 ['user_id', '=', $user_id],
                 ['book_id', '=', $book->id],
-            ])->get();
+            ])->orderBy('chapter_position')->get();
             return view('/chapters/index',['chapters'=>$chapters]);
         }
         return view('/chapters/index');
@@ -88,7 +88,7 @@ class ChaptersController extends Controller
             where([
                 ['user_id', '=', $user_id],
                 ['book_id', '=', $book->id]
-            ])->get();
+            ])->orderBy('chapter_position')->get();
             
             return view('/chapters/view',['chapter'=>$chapter, 'chapters'=>$chapters]);
         }

@@ -23,4 +23,9 @@ class Chapter extends Model
         'book_id',
         'user_id'
     ];
+
+    public function chapter_type()
+    {
+        return $this->belongsTo(ChapterType::class);
+    }
 }

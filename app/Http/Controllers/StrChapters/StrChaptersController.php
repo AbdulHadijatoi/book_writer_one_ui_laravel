@@ -20,7 +20,14 @@ class StrChaptersController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        $str_chapters = StrChapter::where('user_id',$user_id)->get();
+        $book = Book::where('user_id',$user_id)->first();
+        if($book == null){
+            return view('/str_chapters/index');
+        }
+        $str_chapters = StrChapter::where([
+            ['user_id', '=', $user_id],
+            ['book_id', '=', $book->id]
+        ])->orderBy('chapter_position')->get();
         return view('/str_chapters/index',['str_chapters' => $str_chapters]);
         // return view('/str_chapters/index');
     }
@@ -97,10 +104,24 @@ class StrChaptersController extends Controller
     public function show($id)
     {
         $user_id = Auth::id();
-        $str_chapters = StrChapter::where('user_id',$user_id)->get();
-        $currentChapter = StrChapter::where('user_id',$user_id)->where('chapter_number',$id)->first();
+        $book = Book::where('user_id',$user_id)->first();
+        if($book == null){
+            return view('str_chapters.index')->with('failed','Access denied');
+        }
+        $str_chapters = StrChapter::where([
+            ['user_id', '=', $user_id],
+            ['book_id', '=', $book->id]
+        ])->get();
+        $currentChapter = StrChapter::where('user_id',$user_id)->where([
+            ['user_id', '=', $user_id],
+            ['book_id', '=', $book->id],
+            ['chapter_number', '=', $id]
+        ])->first();
+        if($currentChapter == null){
+            return view('str_chapters.index')->with('failed','Access denied');
+        }
         $scenes = Scene::where('str_chapter_id',$currentChapter->id)->get();
-        return view('str_chapters.view',['chapters' => $str_chapters, 'currentChapter' => $currentChapter, 'scenes' => $scenes]);
+        return view('str_chapters.view',['str_chapters' => $str_chapters, 'currentChapter' => $currentChapter, 'scenes' => $scenes]);
     }
 
     /**

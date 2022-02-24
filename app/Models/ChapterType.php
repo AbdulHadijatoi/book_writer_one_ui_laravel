@@ -18,4 +18,11 @@ class ChapterType extends Model
         'chapter_type'
     ];
 
+    public function str_chapter(){
+        return $this->hasMany(StrChapter::class);
+    }
+    
+    public function chapter(){
+        return $this->hasMany(Chapter::class);
+    }
 }

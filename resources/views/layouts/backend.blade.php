@@ -105,7 +105,7 @@
                                         <ul class="nav-main-submenu">
                                             <li class="nav-main-item">
                                                 <a class="nav-main-link {{ (request()->is('str_chapters/'.$chapter->chapter_number)) ? 'active' : '' }}" href="{{route('str_chapters.show',$chapter->chapter_number)}}">
-                                                    <span class="nav-main-link-name">Chapter-{{$chapter->chapter_number ?? '0'}}</span>
+                                                    <span class="nav-main-link-name">{{$chapter->chapter_type->chapter_type}} {{$chapter->chapter_number ?? '0'}}</span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -123,7 +123,7 @@
                                         <ul class="nav-main-submenu">
                                             <li class="nav-main-item">
                                                 <a class="nav-main-link {{ (request()->is('chapters/'.$chapter->id)) ? 'active' : '' }}" href="{{route('chapters.show',$chapter->id)}}">
-                                                    <span class="nav-main-link-name">{{$chapter->chapter_title ?? ''}}</span>
+                                                    <span class="nav-main-link-name">{{$chapter->chapter_type->chapter_type ?? ""}} {{$chapter->chapter_number ?? '0'}}</span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -141,7 +141,7 @@
                                         <ul class="nav-main-submenu">
                                             <li class="nav-main-item">
                                                 <a class="nav-main-link {{ (request()->is('characters/'.$character->id)) ? 'active' : '' }}" href="{{route('characters.show',$character->id)}}">
-                                                    <span class="nav-main-link-name">{{$character->f_name ?? ''}}</span>
+                                                    <span class="nav-main-link-name">{{$character->f_name ?? ''}} {{$character->l_name ?? ''}}</span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -183,7 +183,7 @@
                                             @foreach ( $ml_universes as $universe)
                                                 <ul class="nav-main-submenu">
                                                     <li class="nav-main-item">
-                                                        <a class="nav-main-link {{ (request()->is('universe/myths-and-legends/'.$universe->id)) ? 'active' : '' }}" href="{{route('myths_and_legends.show',$universe->id)}}">
+                                                        <a class="nav-main-link {{ (request()->is('universe/myths_and_legends/'.$universe->id)) ? 'active' : '' }}" href="{{route('myths_and_legends.show',$universe->id)}}">
                                                             <span class="nav-main-link-name">{{$universe->title ?? ''}}</span>
                                                         </a>
                                                     </li>

@@ -45,7 +45,7 @@
                     <div class="items-push m-auto col-xl-12 d-flex justify-content-between flex-column flex-lg-row">
                       <div>
                         <label class="form-label" for="">Chapter Type<span class="text-danger">*</span></label>
-                        <select class="js-select2 form-select" id="chapter_type_id" name="chapter_type_id" style="width: 100%;" data-placeholder="Chapter Type">
+                        <select class="js-select2 form-select" id="chapter_type_id" name="chapter_type_id" style="width: 100%;" data-placeholder="Chapter Type" required>
                           <option selected disabled>Chapter Type</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                           <option value="1">Normal Chapter</option>
                           <option value="2">Interlude</option>
@@ -58,7 +58,7 @@
 
                       <div>
                         <label class="form-label" for="chapter_number">Number of the chapter <span class="text-danger">*</span></label>
-                        <input type="chapter_number" class="form-control" id="chapter_number" name="chapter_number" placeholder="Chapter number" min="1">
+                        <input type="chapter_number" class="form-control" id="chapter_number" name="chapter_number" placeholder="Chapter number" min="1" required>
                         @if ($errors->has('chapter_number'))
                           <span class="text-danger">{{ $errors->first('chapter_number') }}</span>
                         @endif
@@ -66,7 +66,7 @@
 
                       <div>
                         <label class="form-label" for="chapter_position">Position of the chapter in the book<span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" id="chapter_position" name="chapter_position" placeholder="Chapter position" min="1">
+                        <input type="number" class="form-control" id="chapter_position" name="chapter_position" placeholder="Chapter position" min="1" required>
                         @if ($errors->has('chapter_position'))
                           <span class="text-danger">{{ $errors->first('chapter_position') }}</span>
                         @endif

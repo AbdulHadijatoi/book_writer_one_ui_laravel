@@ -18,7 +18,14 @@ class StructureController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        $structure = Structure::where('user_id',$user_id)->first();
+        $book = Book::where('user_id',Auth::id())->first();
+        if($book == null){
+            return view('/structure/index');
+        }
+        $structure = Structure::where([
+            ['user_id', '=', $user_id],
+            ['book_id', '=', $book->id]
+        ])->first();
         return view('/structure/index',['structure'=>$structure]);
     }
 
