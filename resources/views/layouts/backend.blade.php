@@ -105,7 +105,7 @@
                                         <ul class="nav-main-submenu">
                                             <li class="nav-main-item">
                                                 <a class="nav-main-link {{ (request()->is('str_chapters/'.$chapter->chapter_number)) ? 'active' : '' }}" href="{{route('str_chapters.show',$chapter->chapter_number)}}">
-                                                    <span class="nav-main-link-name">{{$chapter->chapter_type->chapter_type}} {{$chapter->chapter_number ?? '0'}}</span>
+                                                    <span class="nav-main-link-name" data-bs-toggle="tooltip" data-bs-animation="true" data-bs-placement="right" title="{{$chapter->chapter_title}}">{{$chapter->chapter_type->chapter_type}} {{$chapter->chapter_number ?? '0'}}</span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -123,7 +123,7 @@
                                         <ul class="nav-main-submenu">
                                             <li class="nav-main-item">
                                                 <a class="nav-main-link {{ (request()->is('chapters/'.$chapter->id)) ? 'active' : '' }}" href="{{route('chapters.show',$chapter->id)}}">
-                                                    <span class="nav-main-link-name">{{$chapter->chapter_type->chapter_type ?? ""}} {{$chapter->chapter_number ?? '0'}}</span>
+                                                    <span class="nav-main-link-name" data-bs-toggle="tooltip" data-bs-animation="true" data-bs-placement="right" title="{{$chapter->chapter_title}}">{{$chapter->chapter_type->chapter_type ?? ""}} {{$chapter->chapter_number ?? '0'}}</span>
                                                 </a>
                                             </li>
                                         </ul>
