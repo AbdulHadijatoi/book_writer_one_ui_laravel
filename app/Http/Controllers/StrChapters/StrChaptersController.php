@@ -43,10 +43,11 @@ class StrChaptersController extends Controller
      */
     public function store(Request $request)
     {
-        $book_id = Book::where('user_id',Auth::id())->first()->id;
-        if($book_id != null){
-            $request->request->add(['book_id' => $book_id]);
+        $book = Book::where('user_id',Auth::id())->first();
+        if($book == null){
+            return back()->with('failed','Please add book first and then come back for this!');
         }
+        $request->request->add(['book_id' => $book->id]);
         $request->request->add(['user_id' => Auth::id()]);
 
         StrChapter::updateOrCreate(
@@ -122,10 +123,11 @@ class StrChaptersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $book_id = Book::where('user_id',Auth::id())->first()->id;
-        if($book_id != null){
-            $request->request->add(['book_id' => $book_id]);
+        $book = Book::where('user_id',Auth::id())->first();
+        if($book == null){
+            return back()->with('failed','Please add book first and then come back for this!');
         }
+        $request->request->add(['book_id' => $book->id]);
         $request->request->add(['user_id' => Auth::id()]);
         
         StrChapter::updateOrCreate(

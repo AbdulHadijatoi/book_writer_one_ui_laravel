@@ -289,7 +289,7 @@
                                 </ul>
                             </li>
                             <li class="nav-main-item {{ (request()->is('illustrations*')) ? 'open' : '' }}">
-                                <a class="nav-main-link nav-main-link-submenu {{ (request()->is('illustrations*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('illustrations.index')}}">
+                                <a class="nav-main-link {{ (request()->is('illustrations*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="{{route('illustrations.index')}}">
                                     <i class="nav-main-link-icon fa fa-image"></i>
                                     <span class="nav-main-link-name">Illustrations</span>
                                 </a>

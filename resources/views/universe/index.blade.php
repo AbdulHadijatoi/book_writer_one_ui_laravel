@@ -23,7 +23,7 @@
       @endif
      
         {{-- Myths and Legends --}}
-        @if(isset($ml_universes))
+        @if(isset($ml_universes) && $ml_universes != null && count($ml_universes)>0)
           <div class="row">
             <div class="col-md-12">
               <div class="block block-rounded">
@@ -53,7 +53,7 @@
         @endif
 
         {{-- Civilization --}}
-        @if(isset($c_universes))
+        @if(isset($c_universes) && $c_universes != null && count($c_universes)>0)
           <div class="row">
             <div class="col-md-12">
               <div class="block block-rounded">
@@ -83,7 +83,7 @@
         @endif
 
         {{-- Bestiary --}}
-        @if(isset($b_universes))
+        @if(isset($b_universes) && $b_universes != null && count($b_universes)>0)
           <div class="row">
             <div class="col-md-12">
               <div class="block block-rounded">
@@ -113,7 +113,7 @@
         @endif
 
         {{-- Magic --}}
-        @if(isset($m_universes))
+        @if(isset($m_universes) && $m_universes != null && count($m_universes)>0)
           <div class="row">
             <div class="col-md-12">
               <div class="block block-rounded">
@@ -143,7 +143,7 @@
         @endif
 
         {{-- Technology --}}
-        @if(isset($t_universes))
+        @if(isset($t_universes) && $t_universes != null && count($t_universes)>0)
           <div class="row">
             <div class="col-md-12">
               <div class="block block-rounded">
@@ -173,7 +173,7 @@
         @endif
 
         {{-- Other --}}
-        @if(isset($o_universes))
+        @if(isset($o_universes) && $o_universes != null && count($o_universes)>0)
           <div class="row">
             <div class="col-md-12">
               <div class="block block-rounded">
