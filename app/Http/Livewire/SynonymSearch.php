@@ -42,8 +42,12 @@ class SynonymSearch extends Component
 
     public function getSearchResults()
     {
-
-        $this->result=Dictionary::where('word', $this->search)->first();
+        $result = Dictionary::where('word', $this->search)->first();
+        if($result != null){
+            $this->result=$result;
+        }else{
+            $this->result = 'null';
+        }
 
 
         // dd($this->result);

@@ -35,7 +35,7 @@
                     <div class="block-content">
                         <div style="text-transform:uppercase;"
                             class="px-3 py-2 text-xs font-weight-bold text-white uppercase bg-primary">
-                            {{ $result->type }}
+                            {{ $result->type ?? 'No match found!'}}
                         </div>
 
                         <ul style="padding:0!important;">
@@ -43,7 +43,7 @@
                                 <li class="d-flex align-items-center px-2 py-2 font-normal no-underline"
                                     style="text-decoration: dotted !important;">
                                     <a href="#">
-                                        <div>{{ $result->synonym }}</div>
+                                        <div>{{ $result->synonym ?? '' }}</div>
                                     </a>
                                 </li>
 
