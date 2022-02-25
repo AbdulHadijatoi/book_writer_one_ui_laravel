@@ -28,13 +28,17 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
         <link rel="stylesheet" id="css-main" href="{{ mix('/css/oneui.css') }}">
 
-        
+
         <!-- You can include a specific file from public/css/themes/ folder to alter the default color theme of the template. eg: -->
         <!-- <link rel="stylesheet" id="css-theme" href="{{ mix('/css/themes/amethyst.css') }}"> -->
+
+        @livewireStyles
         @yield('css_after')
 
         <!-- Scripts -->
         <script>window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};</script>
+
+
     </head>
     <body>
         <div id="page-container" class="sidebar-o enable-page-overlay sidebar-dark side-scroll page-header-fixed main-content-narrow">
@@ -81,7 +85,7 @@
                                     <span class="nav-main-link-name">Dashboard</span>
                                 </a>
                             </li>
-                            
+
                             {{-- <li class="nav-main-heading">Lorem Ipsum</li> --}}
                             <li class="nav-main-item {{ (request()->is('bookinfo*')) ? 'open' : '' }}">
                                 <a class="nav-main-link {{ (request()->is('bookinfo*')) ? 'active' : '' }}" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="{{route('bookinfo.index')}}">
@@ -153,7 +157,7 @@
                                     <i class="nav-main-link-icon fa fa-spinner"></i>
                                     <span class="nav-main-link-name">Geography</span>
                                 </a>
-                                
+
                                 @if(isset($geographies))
                                     @foreach ( $geographies as $geography)
                                         <ul class="nav-main-submenu">
@@ -178,7 +182,7 @@
                                         <i class="nav-main-link-icon fa fa-atom"></i>
                                         <span class="nav-main-link-name">Myths and Legends</span>
                                       </a>
-                                      
+
                                         @if(isset($ml_universes))
                                             @foreach ( $ml_universes as $universe)
                                                 <ul class="nav-main-submenu">
@@ -299,7 +303,7 @@
                                     <i class="nav-main-link-icon si si-pencil"></i>
                                     <span class="nav-main-link-name">Notes</span>
                                 </a>
-                                
+
                                 @if(isset($notes))
                                     @foreach ( $notes as $note)
                                         <ul class="nav-main-submenu">
@@ -357,15 +361,7 @@
                     <!-- Right Section -->
                     <div class="d-flex align-items-center">
                         <!-- Search Form (visible on larger screens) -->
-                        <form class="d-md-inline-block" action="{{route('dashboard.index')}}" method="POST">
-                            @csrf
-                            <div class="input-group input-group-sm">
-                                <input type="text" class="form-control form-control-alt" placeholder="Synonym.." id="page-header-search-input2" name="synonym">
-                                {{-- <span class="input-group-text border-0">
-                                    <i class="fa fa-fw fa-search"></i>
-                                </span> --}}
-                            </div>
-                        </form>
+                       <livewire:synonym-search>
                         <!-- END Search Form -->
 
                         <!-- User Dropdown -->
@@ -388,7 +384,7 @@
                                     <!-- Authentication -->
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
-                                        
+
                                         <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">
                                             <span class="fs-sm fw-medium">Log Out</span>
                                         </a>
@@ -396,7 +392,7 @@
 
                                 </div>
                             </div>
-                        </div>                        
+                        </div>
                         <!-- END User Dropdown -->
                     </div>
                     <!-- END Right Section -->
@@ -433,7 +429,7 @@
 
         <!-- Laravel Scaffolding JS -->
         <!-- <script src="{{ mix('/js/laravel.app.js') }}"></script> -->
-
+        @livewireScripts
         @yield('js_after')
     </body>
 </html>

@@ -21,9 +21,7 @@ class SomeDataSeeder extends Seeder
     public function run()
     {
 
-        UniverseType::truncate();
-        ChapterType::truncate();
-
+      
 
         $universe_types = [
             ['universe_type' => 'Bestiary'],

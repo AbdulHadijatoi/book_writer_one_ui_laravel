@@ -40,7 +40,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       @endif
-     
+
       <!-- Statistics -->
       <div class="row">
         <div class="col-xl-8 col-xxl-9 d-flex flex-column">
@@ -94,6 +94,10 @@
 
         {{-- <div class="row row-deck"> --}}
             {{-- <div class="col-md-12">
+
+
+        <div class="row row-deck">
+            <div class="col-md-12">
                 <div class="block block-rounded">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Welcome</h3>
@@ -132,7 +136,7 @@
                 </div>
                 <!-- END Lines Chart -->
               </div>
-              
+
               <div class="col-xl-6">
                 <!-- Radar Chart -->
                 <div class="block block-rounded">

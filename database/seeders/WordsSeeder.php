@@ -20,7 +20,6 @@ class WordsSeeder extends Seeder
      */
     public function run()
     {
-        Dictionary::truncate();
 
 
         $dictionary = [
@@ -30002,7 +30001,13 @@ class WordsSeeder extends Seeder
             ]
         ];
 
-        Dictionary::insert($dictionary);
+
+        for($i=0; $i<500; $i++){
+            Dictionary::create(
+                $dictionary[$i]
+            );
+        }
+
 
     }
 }
