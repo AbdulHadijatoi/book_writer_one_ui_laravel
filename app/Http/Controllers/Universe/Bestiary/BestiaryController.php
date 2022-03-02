@@ -148,6 +148,6 @@ class BestiaryController extends Controller
     public function destroy($id)
     {
         Universe::where('id','=',$id)->delete();
-        return view('universe.bestiary.index')->with('success','successfully deleted!');
+        return redirect()->route('bestiary.index')->with('success','successfully deleted!');
     }
 }

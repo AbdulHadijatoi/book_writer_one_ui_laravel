@@ -115,6 +115,6 @@ class IllustrationsController extends Controller
     public function destroy($id)
     {
         Picture::where('id','=',$id)->delete();
-        return back()->with('success','successfully deleted!');
+        return redirect()->route('illustrations.index')->with('success','successfully deleted!');
     }
 }

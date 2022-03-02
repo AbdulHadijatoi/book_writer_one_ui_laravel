@@ -148,6 +148,6 @@ class TechnologyController extends Controller
     public function destroy($id)
     {
         Universe::where('id','=',$id)->delete();
-        return view('universe.technology.index')->with('success','successfully deleted!');
+        return redirect()->route('technology.index')->with('success','successfully deleted!');
     }
 }

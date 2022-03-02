@@ -231,9 +231,13 @@
     function addScene(){  
          i++;  
          let newScene = document.createElement("div");
-        newScene.innerHTML = '<div id="row'+i+'" class="row"> <div class="col-md-12"> <div class="block block-rounded"> <div class="block-header block-header-default"> <h3 class="block-title">Scene</h3> <div class="block-options"> <button type="button" class="btn-block-option" data-toggle="block-option" data-action="fullscreen_toggle"></button> <button type="button" class="btn-block-option" data-toggle="block-option" data-action="content_toggle"></button> </div> </div> <div class="block-content"> <div class="block block-rounded"> <div class="block-content block-content-full"> <div class="row items-push"> <div class="col-xl-12 m-auto"> <div class="items-push m-auto col-xl-12 d-flex justify-content-center">  <div> <label class="form-label" for="scene_number'+i+'">Scene number<span class="text-danger">*</span></label> <input type="number" class="form-control" id="scene_number'+i+'" name="scene_number[]" placeholder="Scene number" min="1" required> @if ($errors->has("scene_number")) <span class="text-danger">{{ $errors->first("scene_number") }}</span> @endif  </div> </div> <div role="separator" class="dropdown-divider m-0 mb-4"></div> <div class="form-floating mb-4">  <input type="text" class="form-control" id="scene_location'+i+'" name="scene_location[]" placeholder="Scene Location">  <label for="scene_location'+i+'">Location</label>  @if ($errors->has("scene_location")) <span class="text-danger">{{ $errors->first("scene_location") }}</span>  @endif </div> <div class="form-floating mb-4">  <input type="text" class="form-control" id="scene_characters'+i+'" name="scene_characters[]" placeholder="Scene Characters">  <label for="scene_characters'+i+'">Characters</label>  @if ($errors->has("scene_characters")) <span class="text-danger">{{ $errors->first("scene_characters") }}</span>  @endif </div> <div role="separator" class="dropdown-divider m-0 mb-4"></div> <div class="form-floating mb-4">  <textarea class="form-control" id="scene_issues'+i+'" name="scene_issues[]" style="height: 200px" placeholder="Enjeux et place dans le recit"></textarea>  <label for="scene_issues'+i+'">Issues and place in the story</label>  @if ($errors->has("scene_issues")) <span class="text-danger">{{ $errors->first("scene_issues") }}</span>  @endif </div> <div role="separator" class="dropdown-divider m-0 mb-4"></div> <div class="form-floating mb-4">  <textarea class="form-control" id="scene_abstract'+i+'" name="scene_abstract[]" style="height: 200px" placeholder="Abstract"></textarea>  <label for="scene_abstract'+i+'">Abstract</label>  @if ($errors->has("scene_abstract")) <span class="text-danger">{{ $errors->first("scene_abstract") }}</span>  @endif </div> </div> </div> <div class="row items-push"> <div class="col-xl-12 m-auto d-flex justify-content-between"> <button type="button" id="btn_addScene'+i+'" class="btn btn-success btn_add_scene"  onclick="addScene()">New Scene</button> <button type="button" id="'+i+'" class="btn btn-warning btn_remove_scene" onclick="removeScene(this)">Delete</button> <button type="submit" class="btn btn-primary">Save</button> </div> </div> </div> </div> </div> </div> </div> </div>';
+        //  newScene.classList.add("row");
+         newScene.setAttribute("id","row"+i);
+         newScene.setAttribute("class","row");
+
+        newScene.innerHTML = '<div class="col-md-12"> <div class="block block-rounded"> <div class="block-header block-header-default"> <h3 class="block-title">Scene</h3> <div class="block-options"> <button type="button" class="btn-block-option" data-toggle="block-option" data-action="fullscreen_toggle"></button> <button type="button" class="btn-block-option" data-toggle="block-option" data-action="content_toggle"></button> </div> </div> <div class="block-content"> <div class="block block-rounded"> <div class="block-content block-content-full"> <div class="row items-push"> <div class="col-xl-12 m-auto"> <div class="items-push m-auto col-xl-12 d-flex justify-content-center">  <div> <label class="form-label" for="scene_number'+i+'">Scene number<span class="text-danger">*</span></label> <input type="number" class="form-control" id="scene_number'+i+'" name="scene_number[]" placeholder="Scene number" min="1" required> @if ($errors->has("scene_number")) <span class="text-danger">{{ $errors->first("scene_number") }}</span> @endif  </div> </div> <div role="separator" class="dropdown-divider m-0 mb-4"></div> <div class="form-floating mb-4">  <input type="text" class="form-control" id="scene_location'+i+'" name="scene_location[]" placeholder="Scene Location">  <label for="scene_location'+i+'">Location</label>  @if ($errors->has("scene_location")) <span class="text-danger">{{ $errors->first("scene_location") }}</span>  @endif </div> <div class="form-floating mb-4">  <input type="text" class="form-control" id="scene_characters'+i+'" name="scene_characters[]" placeholder="Scene Characters">  <label for="scene_characters'+i+'">Characters</label>  @if ($errors->has("scene_characters")) <span class="text-danger">{{ $errors->first("scene_characters") }}</span>  @endif </div> <div role="separator" class="dropdown-divider m-0 mb-4"></div> <div class="form-floating mb-4">  <textarea class="form-control" id="scene_issues'+i+'" name="scene_issues[]" style="height: 200px" placeholder="Enjeux et place dans le recit"></textarea>  <label for="scene_issues'+i+'">Issues and place in the story</label>  @if ($errors->has("scene_issues")) <span class="text-danger">{{ $errors->first("scene_issues") }}</span>  @endif </div> <div role="separator" class="dropdown-divider m-0 mb-4"></div> <div class="form-floating mb-4">  <textarea class="form-control" id="scene_abstract'+i+'" name="scene_abstract[]" style="height: 200px" placeholder="Abstract"></textarea>  <label for="scene_abstract'+i+'">Abstract</label>  @if ($errors->has("scene_abstract")) <span class="text-danger">{{ $errors->first("scene_abstract") }}</span>  @endif </div> </div> </div> <div class="row items-push"> <div class="col-xl-12 m-auto d-flex justify-content-between"> <button type="button" id="btn_addScene'+i+'" class="btn btn-success btn_add_scene"  onclick="addScene()">New Scene</button> <button type="button" id="'+i+'" class="btn btn-warning btn_remove_scene" onclick="removeScene(this)">Delete</button> <button type="submit" class="btn btn-primary">Save</button> </div> </div> </div> </div> </div> </div> </div>';
          document.getElementById('str_chapter_form').appendChild(newScene);
-         reloadRepeatableBlocks();
+        //  reloadRepeatableBlocks();
     } 
 
 
@@ -244,46 +248,7 @@
     }
 
 
-    // $.ajaxSetup({
-    //     headers: {
-    //       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //     }
-    // });
-
-
-    // $('#submit').click(function(){            
-    //      $.ajax({  
-    //           url:postURL,  
-    //           method:"POST",  
-    //           data:$('#add_name').serialize(),
-    //           type:'json',
-    //           success:function(data)  
-    //           {
-    //               if(data.error){
-    //                   printErrorMsg(data.error);
-    //               }else{
-    //                   i=1;
-    //                   $('.dynamic-added').remove();
-    //                   $('#add_name')[0].reset();
-    //                   $(".print-success-msg").find("ul").html('');
-    //                   $(".print-success-msg").css('display','block');
-    //                   $(".print-error-msg").css('display','none');
-    //                   $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');
-    //               }
-    //           }  
-    //      });  
-    // });  
-
-
-    // function printErrorMsg (msg) {
-    //    $(".print-error-msg").find("ul").html('');
-    //    $(".print-error-msg").css('display','block');
-    //    $(".print-success-msg").css('display','none');
-    //    $.each( msg, function( key, value ) {
-    //       $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
-    //    });
-    // }
-
+  
     function reloadRepeatableBlocks() {
       var _this = this;
 

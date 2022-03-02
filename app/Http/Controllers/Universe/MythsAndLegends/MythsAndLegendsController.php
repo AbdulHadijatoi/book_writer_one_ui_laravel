@@ -148,6 +148,6 @@ class MythsAndLegendsController extends Controller
     public function destroy($id)
     {
         Universe::where('id','=',$id)->delete();
-        return view('universe.myths-and-legends.index')->with('success','successfully deleted!');
+        return redirect()->route('myths-and-legends.index')->with('success','successfully deleted!');
     }
 }

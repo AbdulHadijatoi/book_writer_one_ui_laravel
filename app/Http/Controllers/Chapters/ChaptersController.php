@@ -142,6 +142,6 @@ class ChaptersController extends Controller
     public function destroy($id)
     {
         Chapter::where('id','=',$id)->delete();
-        return view('chapters.index')->with('success','successfully deleted!');
+        return redirect()->route('chapters.index')->with('success','successfully deleted!');
     }
 }

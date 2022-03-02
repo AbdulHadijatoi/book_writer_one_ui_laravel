@@ -148,6 +148,6 @@ class OtherController extends Controller
     public function destroy($id)
     {
         Universe::where('id','=',$id)->delete();
-        return view('universe.other.index')->with('success','successfully deleted!');
+        return redirect()->route('other.index')->with('success','successfully deleted!');
     }
 }

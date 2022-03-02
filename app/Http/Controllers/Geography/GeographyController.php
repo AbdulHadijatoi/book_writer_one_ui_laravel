@@ -142,6 +142,6 @@ class GeographyController extends Controller
     public function destroy($id)
     {
         Geography::where('id','=',$id)->delete();
-        return view('geography.index')->with('success','successfully deleted!');
+        return redirect()->route('geography.index')->with('success','successfully deleted!');
     }
 }

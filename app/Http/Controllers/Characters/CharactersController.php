@@ -162,6 +162,6 @@ class CharactersController extends Controller
     public function destroy($id)
     {
         Character::where('id','=',$id)->delete();
-        return view('characters.index')->with('success','successfully deleted!');
+        return redirect()->route('characters.index')->with('success','successfully deleted!');
     }
 }

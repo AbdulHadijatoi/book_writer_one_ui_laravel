@@ -148,6 +148,6 @@ class CivilizationController extends Controller
     public function destroy($id)
     {
         Universe::where('id','=',$id)->delete();
-        return view('universe.civilization.index')->with('success','successfully deleted!');
+        return redirect()->route('civilization.index')->with('success','successfully deleted!');
     }
 }

@@ -148,6 +148,6 @@ class MagicController extends Controller
     public function destroy($id)
     {
         Universe::where('id','=',$id)->delete();
-        return view('universe.magic.index')->with('success','successfully deleted!');
+        return redirect()->route('magic.index')->with('success','successfully deleted!');
     }
 }

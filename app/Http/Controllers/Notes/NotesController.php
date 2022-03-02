@@ -143,7 +143,7 @@ class NotesController extends Controller
     public function destroy($id)
     {
         Note::where('id','=',$id)->delete();
-        return view('notes.index')->with('success','successfully deleted!');
+        return redirect()->route('notes.index')->with('success','successfully deleted!');
     }
 
 }

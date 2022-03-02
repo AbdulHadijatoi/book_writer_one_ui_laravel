@@ -199,7 +199,7 @@ class StrChaptersController extends Controller
     public function destroy($id)
     {
         StrChapter::where('id','=',$id)->delete();
-        return view('str_chapters.index')->with('success','successfully deleted!');
+        return redirect()->route('str_chapters.index')->with('success','successfully deleted!');
     }
 
 }
